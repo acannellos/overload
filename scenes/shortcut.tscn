@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7kj1dx6eu15q"]
+
+[ext_resource type="Script" path="res://scripts/shortcut.gd" id="1_sgmxo"]
+[ext_resource type="Texture2D" uid="uid://doifg8ruxcahx" path="res://assets/textures/icons.default.png" id="2_p0q5f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmhhr"]
+
+[node name="shortcut" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xmhhr")
+script = ExtResource("1_sgmxo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_p0q5f")
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

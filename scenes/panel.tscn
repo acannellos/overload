@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://rwuet5lrrsoc"]
+
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_40ldk"]
+
+[node name="panel" type="NinePatchRect"]
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_40ldk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20

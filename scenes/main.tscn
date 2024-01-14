@@ -1,0 +1,166 @@
+[gd_scene load_steps=8 format=3 uid="uid://deni87t3dblur"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_urqak"]
+[ext_resource type="Texture2D" uid="uid://deg2s4crpkvcn" path="res://assets/textures/bg.png" id="1_xi335"]
+[ext_resource type="Texture2D" uid="uid://b8lllp7ums0fy" path="res://assets/textures/pc.3d.png" id="3_ws5yp"]
+[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="4_jekmt"]
+[ext_resource type="PackedScene" uid="uid://c7kj1dx6eu15q" path="res://scenes/shortcut.tscn" id="5_cccfp"]
+[ext_resource type="PackedScene" uid="uid://44oi3hxl61ks" path="res://scenes/window.tscn" id="5_khtn1"]
+[ext_resource type="PackedScene" uid="uid://b3ucqjbeiqpe0" path="res://scenes/task.tscn" id="6_pwdlb"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_urqak")
+
+[node name="bg_layer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="bg" type="TextureRect" parent="bg_layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xi335")
+
+[node name="pc_layer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="pc" type="TextureRect" parent="pc_layer"]
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("3_ws5yp")
+
+[node name="screen" parent="pc_layer/pc" instance=ExtResource("4_jekmt")]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 59.0
+offset_right = 857.0
+offset_bottom = 498.0
+
+[node name="windows" type="Control" parent="pc_layer/pc/screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="staff" parent="pc_layer/pc/screen/windows" instance=ExtResource("5_khtn1")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 30.0
+offset_right = 216.0
+offset_bottom = 360.0
+title = "staff"
+
+[node name="email" parent="pc_layer/pc/screen/windows" instance=ExtResource("5_khtn1")]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 21.0
+offset_right = 501.0
+offset_bottom = 378.0
+title = "email"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="pc_layer/pc/screen/windows/email"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 79.0
+offset_right = -29.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="task" parent="pc_layer/pc/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
+layout_mode = 2
+
+[node name="task2" parent="pc_layer/pc/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
+layout_mode = 2
+
+[node name="task3" parent="pc_layer/pc/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
+layout_mode = 2
+
+[node name="task4" parent="pc_layer/pc/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
+layout_mode = 2
+
+[node name="task5" parent="pc_layer/pc/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
+layout_mode = 2
+
+[node name="work" parent="pc_layer/pc/screen/windows" instance=ExtResource("5_khtn1")]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 31.0
+offset_right = 711.0
+offset_bottom = 375.0
+title = "todo"
+
+[node name="taskbar" parent="pc_layer/pc/screen" instance=ExtResource("4_jekmt")]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 379.0
+offset_right = 760.0
+offset_bottom = 439.0
+
+[node name="icon_staff" parent="pc_layer/pc/screen/taskbar" node_paths=PackedStringArray("window") instance=ExtResource("5_cccfp")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 59.0
+offset_bottom = 48.0
+window = NodePath("../../windows/staff")
+
+[node name="icon_email" parent="pc_layer/pc/screen/taskbar" node_paths=PackedStringArray("window") instance=ExtResource("5_cccfp")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 48.0
+window = NodePath("../../windows/email")
+
+[node name="icon_work" parent="pc_layer/pc/screen/taskbar" node_paths=PackedStringArray("window") instance=ExtResource("5_cccfp")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 8.0
+offset_right = 140.0
+offset_bottom = 48.0
+window = NodePath("../../windows/work")
+
+[node name="front_layer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="notes" type="Control" parent="front_layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 59.0
+offset_right = 97.0
+offset_bottom = 59.0
+
+[node name="note3" parent="front_layer/notes" instance=ExtResource("4_jekmt")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 715.761
+offset_top = 200.0
+offset_right = 823.761
+offset_bottom = 312.0
+rotation = 0.0174533
+
+[node name="note2" parent="front_layer/notes" instance=ExtResource("4_jekmt")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 716.761
+offset_top = 90.0
+offset_right = 824.761
+offset_bottom = 202.0
+rotation = 0.0174533
+
+[node name="note1" parent="front_layer/notes" instance=ExtResource("4_jekmt")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 715.761
+offset_top = 10.0
+offset_right = 823.761
+offset_bottom = 122.0
+rotation = 0.0872665

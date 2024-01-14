@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4e081k54h20x"]
+
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="1_pqj51"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jgebf"]
+font = ExtResource("1_pqj51")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "lorum"
+label_settings = SubResource("LabelSettings_jgebf")
