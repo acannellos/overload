@@ -5,6 +5,8 @@ extends VBoxContainer
 
 func _ready():
 	populate_task_list()
+	print(get_child_count())
+	size.y = 50 * get_child_count()
 
 func _process(delta):
 	pass
