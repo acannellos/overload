@@ -1,12 +1,65 @@
-[gd_scene format=3 uid="uid://b3ucqjbeiqpe0"]
+[gd_scene load_steps=10 format=3 uid="uid://dlip7jieytqqw"]
 
-[node name="task" type="Panel"]
-offset_right = 40.0
+[ext_resource type="Texture2D" uid="uid://djo7i6tgq335t" path="res://assets/textures/pix.whitebg.png" id="1_c4ypa"]
+[ext_resource type="Texture2D" uid="uid://bpjf4dc5xwx5p" path="res://assets/textures/pix.whitebg.k.png" id="2_4pt2g"]
+[ext_resource type="Texture2D" uid="uid://doifg8ruxcahx" path="res://assets/textures/icons.default.png" id="2_f5h7x"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="3_4cyge"]
+[ext_resource type="Script" path="res://scripts/task_button.gd" id="3_dw0ur"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="4_l8ck2"]
+[ext_resource type="Texture2D" uid="uid://cbfvwm00662jy" path="res://assets/textures/bar.under.png" id="5_6in4v"]
+[ext_resource type="Texture2D" uid="uid://cnjiawcpulbfs" path="res://assets/textures/bar.over.png" id="6_jqyci"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgcdx"]
+resource_local_to_scene = true
+font = ExtResource("4_l8ck2")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[node name="task" type="TextureButton"]
+offset_right = 200.0
 offset_bottom = 40.0
-size_flags_horizontal = 3
 size_flags_vertical = 3
+texture_normal = ExtResource("1_c4ypa")
+texture_hover = ExtResource("2_4pt2g")
+stretch_mode = 0
+script = ExtResource("3_dw0ur")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="label" parent="." instance=ExtResource("3_4cyge")]
+layout_mode = 2
+offset_left = 55.0
+offset_top = -5.0
+offset_right = 170.0
+offset_bottom = 33.0
+text = "Task"
+label_settings = SubResource("LabelSettings_qgcdx")
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 48.0
+offset_top = 25.0
+offset_right = -12.0
+offset_bottom = 45.0
+grow_horizontal = 2
+scale = Vector2(1, 0.7)
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("5_6in4v")
+texture_progress = ExtResource("6_jqyci")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_f5h7x")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://deni87t3dblur"]
+[gd_scene load_steps=19 format=3 uid="uid://deni87t3dblur"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_urqak"]
 [ext_resource type="Texture2D" uid="uid://deg2s4crpkvcn" path="res://assets/textures/bg.png" id="1_xi335"]
@@ -8,8 +8,37 @@
 [ext_resource type="Texture2D" uid="uid://t6ge8qnc86bx" path="res://assets/textures/decoration.fan.png" id="4_r7nvd"]
 [ext_resource type="PackedScene" uid="uid://c7kj1dx6eu15q" path="res://scenes/shortcut.tscn" id="5_cccfp"]
 [ext_resource type="PackedScene" uid="uid://44oi3hxl61ks" path="res://scenes/window.tscn" id="5_khtn1"]
-[ext_resource type="PackedScene" uid="uid://b3ucqjbeiqpe0" path="res://scenes/task.tscn" id="6_pwdlb"]
+[ext_resource type="Script" path="res://scripts/task_list.gd" id="8_gtkw0"]
+[ext_resource type="Script" path="res://scripts/task_data.gd" id="9_1cvox"]
 [ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="9_kr8o7"]
+[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="10_blahj"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="12_o5nck"]
+
+[sub_resource type="Resource" id="Resource_twink"]
+script = ExtResource("9_1cvox")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="Resource" id="Resource_npeys"]
+script = ExtResource("9_1cvox")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="Resource" id="Resource_0mi3g"]
+script = ExtResource("9_1cvox")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="Resource" id="Resource_vkhnd"]
+script = ExtResource("9_1cvox")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dbpxa"]
+resource_local_to_scene = true
+font = ExtResource("12_o5nck")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_urqak")
@@ -68,14 +97,13 @@ title = "staff"
 
 [node name="email" parent="screen_layer/screen/windows" instance=ExtResource("5_khtn1")]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 21.0
-offset_right = 501.0
-offset_bottom = 378.0
+offset_left = 216.0
+offset_top = 23.0
+offset_right = 524.0
+offset_bottom = 380.0
 title = "email"
 
-[node name="HBoxContainer" type="VBoxContainer" parent="screen_layer/screen/windows/email"]
-visible = false
+[node name="task_list" type="VBoxContainer" parent="screen_layer/screen/windows/email"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,31 +114,35 @@ offset_right = -29.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="task" parent="screen_layer/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
-layout_mode = 2
-
-[node name="task2" parent="screen_layer/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
-layout_mode = 2
-
-[node name="task3" parent="screen_layer/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
-layout_mode = 2
-
-[node name="task4" parent="screen_layer/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
-layout_mode = 2
-
-[node name="task5" parent="screen_layer/screen/windows/email/HBoxContainer" instance=ExtResource("6_pwdlb")]
-layout_mode = 2
+script = ExtResource("8_gtkw0")
+task_datas = Array[ExtResource("9_1cvox")]([SubResource("Resource_twink"), SubResource("Resource_npeys"), SubResource("Resource_0mi3g"), null, null])
+Task = ExtResource("10_blahj")
 
 [node name="todo" parent="screen_layer/screen/windows" instance=ExtResource("5_khtn1")]
 layout_mode = 0
-offset_left = 504.0
-offset_top = 31.0
-offset_right = 711.0
-offset_bottom = 375.0
+offset_left = 528.0
+offset_top = 30.0
+offset_right = 735.0
+offset_bottom = 374.0
 title = "todo"
 
+[node name="task_list" type="VBoxContainer" parent="screen_layer/screen/windows/todo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 77.0
+offset_right = -32.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_gtkw0")
+task_datas = Array[ExtResource("9_1cvox")]([SubResource("Resource_vkhnd"), null, null, null, null])
+Task = ExtResource("10_blahj")
+
 [node name="id_card" parent="screen_layer/screen/windows" instance=ExtResource("5_khtn1")]
+visible = false
 layout_mode = 0
 offset_left = 92.0
 offset_top = 112.0
@@ -132,6 +164,7 @@ grow_vertical = 2
 
 [node name="Label" parent="screen_layer/screen/windows/id_card/HBoxContainer" instance=ExtResource("9_kr8o7")]
 layout_mode = 2
+label_settings = SubResource("LabelSettings_dbpxa")
 
 [node name="taskbar" parent="screen_layer/screen" instance=ExtResource("4_jekmt")]
 layout_mode = 0
