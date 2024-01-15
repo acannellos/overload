@@ -17,5 +17,8 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			#shortcut_clicked.emit()
-			window.visible = not window.visible
-			print("clicked")
+			if window:
+				window.visible = not window.visible
+				print("clicked")
+			else:
+				print("no window")

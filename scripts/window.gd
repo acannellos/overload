@@ -9,8 +9,14 @@ var is_mouse_pressed = false
 var is_gui_clicked = false
 var prev_mouse_pos: Vector2
 
+var is_mouse_stopped = false
+
 func _ready():
 	label.text = title
+	Events.connect("mouse_stopped", on_mouse_stopped)
+
+func on_mouse_stopped():
+	is_mouse_stopped = true
 
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -22,9 +28,10 @@ func _input(event):
 			is_mouse_pressed = event.pressed
 			is_gui_clicked = false
 			prev_mouse_pos = Vector2.ZERO
+			is_mouse_stopped = false
 
 func _process(delta):
-	if is_gui_clicked:
+	if is_gui_clicked and not is_mouse_stopped:
 		# Get the mouse motion
 		var current_mouse_pos = get_global_mouse_position()
 		

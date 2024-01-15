@@ -1,0 +1,225 @@
+[gd_scene load_steps=18 format=3 uid="uid://c76rjq6nleloo"]
+
+[ext_resource type="Script" path="res://scripts/main.canvas.gd" id="1_f72pj"]
+[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="1_s8pgk"]
+[ext_resource type="PackedScene" uid="uid://44oi3hxl61ks" path="res://scenes/window.tscn" id="2_24epb"]
+[ext_resource type="Script" path="res://scripts/task_list.gd" id="3_h6i8t"]
+[ext_resource type="Script" path="res://scripts/task_data.gd" id="4_7bvga"]
+[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="5_ocy1c"]
+[ext_resource type="PackedScene" uid="uid://c7kj1dx6eu15q" path="res://scenes/shortcut.tscn" id="6_2uflq"]
+[ext_resource type="Texture2D" uid="uid://d4mufm1g3dx18" path="res://assets/textures/bg.xp.wip1.png" id="7_niw2m"]
+[ext_resource type="Texture2D" uid="uid://ce75k6i6od5rh" path="res://assets/textures/decoration.plant.2d.png" id="8_5xric"]
+[ext_resource type="Texture2D" uid="uid://t6ge8qnc86bx" path="res://assets/textures/decoration.fan.png" id="9_svv2g"]
+[ext_resource type="Texture2D" uid="uid://bknib63qcytyd" path="res://assets/textures/bg.xp.wip2.png" id="10_fjs64"]
+[ext_resource type="Texture2D" uid="uid://dbkrtckq3jw2v" path="res://assets/textures/cursor.handclick.small.wip.png" id="12_erben"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vohn1"]
+
+[sub_resource type="Resource" id="Resource_vkhnd"]
+script = ExtResource("4_7bvga")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="Resource" id="Resource_twink"]
+script = ExtResource("4_7bvga")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="Resource" id="Resource_npeys"]
+script = ExtResource("4_7bvga")
+progress = 0.0
+goal = 100.0
+
+[sub_resource type="Resource" id="Resource_0mi3g"]
+script = ExtResource("4_7bvga")
+progress = 0.0
+goal = 100.0
+
+[node name="main" type="CanvasLayer" node_paths=PackedStringArray("handclick_sprite")]
+layer = -2
+script = ExtResource("1_f72pj")
+handclick_sprite = NodePath("sprites/handclick")
+
+[node name="screen" parent="." instance=ExtResource("1_s8pgk")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 97.0
+offset_top = 59.0
+offset_right = -103.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="windows" type="Panel" parent="screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.03
+anchor_right = 0.98
+anchor_bottom = 0.886
+offset_left = -0.12
+offset_top = -0.17
+offset_right = 0.200012
+offset_bottom = 0.04599
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vohn1")
+
+[node name="player" parent="screen/windows" instance=ExtResource("2_24epb")]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 222.0
+offset_bottom = 362.0
+title = "baba"
+
+[node name="task_list" type="VBoxContainer" parent="screen/windows/player"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 32.0
+offset_top = 77.0
+offset_right = -32.0
+offset_bottom = 302.0
+grow_horizontal = 2
+script = ExtResource("3_h6i8t")
+task_datas = Array[ExtResource("4_7bvga")]([SubResource("Resource_vkhnd"), null, null])
+Task = ExtResource("5_ocy1c")
+
+[node name="email" parent="screen/windows" instance=ExtResource("2_24epb")]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 13.0
+offset_right = 528.0
+offset_bottom = 370.0
+title = "email"
+
+[node name="task_list" type="VBoxContainer" parent="screen/windows/email"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 35.0
+offset_top = 79.0
+offset_right = -29.0
+offset_bottom = 317.0
+grow_horizontal = 2
+script = ExtResource("3_h6i8t")
+task_datas = Array[ExtResource("4_7bvga")]([SubResource("Resource_twink"), SubResource("Resource_npeys"), SubResource("Resource_0mi3g"), null])
+Task = ExtResource("5_ocy1c")
+
+[node name="staff" parent="screen/windows" instance=ExtResource("2_24epb")]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 27.0
+offset_right = 722.0
+offset_bottom = 357.0
+title = "staff"
+
+[node name="task_list2" type="VBoxContainer" parent="screen/windows/staff"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 33.0
+offset_top = 73.0
+offset_right = -31.0
+offset_bottom = 284.0
+grow_horizontal = 2
+script = ExtResource("3_h6i8t")
+task_datas = Array[ExtResource("4_7bvga")]([null, null, null])
+Task = ExtResource("5_ocy1c")
+
+[node name="taskbar" parent="screen" instance=ExtResource("1_s8pgk")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.003
+anchor_top = 0.863
+anchor_right = -0.003
+anchor_bottom = 0.863
+offset_left = 0.28
+offset_top = 0.142975
+offset_right = 762.28
+offset_bottom = 60.143
+
+[node name="icon1" parent="screen/taskbar" node_paths=PackedStringArray("window") instance=ExtResource("6_2uflq")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 59.0
+offset_bottom = 48.0
+window = NodePath("../../windows/player")
+
+[node name="icon2" parent="screen/taskbar" node_paths=PackedStringArray("window") instance=ExtResource("6_2uflq")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 48.0
+window = NodePath("../../windows/email")
+
+[node name="icon3" parent="screen/taskbar" node_paths=PackedStringArray("window") instance=ExtResource("6_2uflq")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 8.0
+offset_right = 140.0
+offset_bottom = 48.0
+window = NodePath("../../windows/staff")
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="bg" type="Sprite2D" parent="sprites"]
+texture = ExtResource("7_niw2m")
+centered = false
+
+[node name="plant" type="Sprite2D" parent="sprites"]
+position = Vector2(953, 356)
+texture = ExtResource("8_5xric")
+
+[node name="fan" type="Sprite2D" parent="sprites"]
+position = Vector2(46, 415)
+texture = ExtResource("9_svv2g")
+
+[node name="pc" type="Sprite2D" parent="sprites"]
+texture = ExtResource("10_fjs64")
+centered = false
+
+[node name="handclick" type="Sprite2D" parent="sprites"]
+visible = false
+texture = ExtResource("12_erben")
+centered = false
+
+[node name="notes" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 59.0
+offset_right = 97.0
+offset_bottom = 59.0
+
+[node name="note3" parent="notes" instance=ExtResource("1_s8pgk")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 715.761
+offset_top = 200.0
+offset_right = 823.761
+offset_bottom = 312.0
+rotation = 0.0174533
+
+[node name="note2" parent="notes" instance=ExtResource("1_s8pgk")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 716.761
+offset_top = 90.0
+offset_right = 824.761
+offset_bottom = 202.0
+rotation = 0.0174533
+
+[node name="note1" parent="notes" instance=ExtResource("1_s8pgk")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 715.761
+offset_top = 10.0
+offset_right = 823.761
+offset_bottom = 122.0
+rotation = 0.0872665
