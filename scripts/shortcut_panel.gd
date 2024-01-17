@@ -11,7 +11,14 @@ extends PanelContainer
 	#pass
 
 @export var window: NinePatchRect
+@export var texture: CompressedTexture2D
 
+@onready var texture_rect = $MarginContainer/TextureRect
+
+
+func _ready():
+	if texture:
+		texture_rect.texture = texture
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():

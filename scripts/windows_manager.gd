@@ -1,5 +1,6 @@
-extends Node
+extends Panel
 
+@export var task_grabbed: TextureButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

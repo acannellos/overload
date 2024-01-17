@@ -23,8 +23,6 @@ texture_normal = ExtResource("1_c4ypa")
 texture_hover = ExtResource("2_4pt2g")
 stretch_mode = 0
 script = ExtResource("3_dw0ur")
-hazard_color = Color(0.709804, 0.537255, 0, 0.117647)
-overload_color = Color(0.862745, 0.196078, 0.184314, 0.117647)
 
 [node name="label" parent="." instance=ExtResource("3_4cyge")]
 layout_mode = 2
@@ -46,7 +44,6 @@ offset_right = -10.0
 offset_bottom = 45.0
 grow_horizontal = 2
 scale = Vector2(1, 0.7)
-value = 50.0
 nine_patch_stretch = true
 stretch_margin_left = 10
 stretch_margin_top = 10

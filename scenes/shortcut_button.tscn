@@ -1,0 +1,41 @@
+[gd_scene load_steps=13 format=3 uid="uid://bge40b3se8kv4"]
+
+[ext_resource type="Texture2D" uid="uid://da3hsxs0e2br1" path="res://assets/textures/task_icons.star.png" id="1_4ncsr"]
+[ext_resource type="Texture2D" uid="uid://b41ydci5fg5ep" path="res://assets/textures/task_icons.star.50.png" id="1_dh3uu"]
+[ext_resource type="Script" path="res://scripts/shortcut_button.gd" id="3_ksmee"]
+[ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="4_a36fg"]
+[ext_resource type="Texture2D" uid="uid://ckswasapjbmqg" path="res://assets/textures/task_icons.square.png" id="5_hyxbu"]
+[ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="6_o44c5"]
+[ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="7_v2ncc"]
+[ext_resource type="Texture2D" uid="uid://0xv0cechb1g7" path="res://assets/textures/task_icons.circle.50.png" id="8_jgkg6"]
+[ext_resource type="Texture2D" uid="uid://d32fuhlj002rh" path="res://assets/textures/task_icons.square.50.png" id="9_rtxvd"]
+[ext_resource type="Texture2D" uid="uid://cqyc83w0pdng8" path="res://assets/textures/task_icons.diamond.50.png" id="10_fx2jv"]
+[ext_resource type="Texture2D" uid="uid://c2xauhc7064st" path="res://assets/textures/task_icons.triangle.50.png" id="11_dsiqn"]
+[ext_resource type="Texture2D" uid="uid://d2ckxyrom4tht" path="res://assets/textures/icon.blip.png" id="12_gyxss"]
+
+[node name="shortcut" type="TextureButton"]
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_dh3uu")
+texture_hover = ExtResource("1_4ncsr")
+script = ExtResource("3_ksmee")
+tex_green = ExtResource("4_a36fg")
+tex_blue = ExtResource("5_hyxbu")
+tex_violet = ExtResource("6_o44c5")
+tex_magenta = ExtResource("7_v2ncc")
+tex_green_50 = ExtResource("8_jgkg6")
+tex_blue_50 = ExtResource("9_rtxvd")
+tex_violet_50 = ExtResource("10_fx2jv")
+tex_magenta_50 = ExtResource("11_dsiqn")
+
+[node name="blip" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+z_index = 99
+z_as_relative = false
+position = Vector2(50, 165)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_gyxss")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
