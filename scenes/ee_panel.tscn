@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhv4w31m8jxg4"]
+
+[ext_resource type="PackedScene" uid="uid://skxrnmiyhs86" path="res://scenes/employee.tscn" id="1_uwmqy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="employee" parent="." instance=ExtResource("1_uwmqy")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 207.0
+offset_bottom = 344.0

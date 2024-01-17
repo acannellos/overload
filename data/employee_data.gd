@@ -1,7 +1,9 @@
 extends Resource
-class_name IDCardData
+class_name EmployeeData
 
 @export var name: String
+@export var id: int = 0
+@export var type = Enums.EmployeeType.PLAYER
 @export var days_employed: int
 
 @export var workload: float = 0.0:

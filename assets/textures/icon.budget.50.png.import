@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbkrtckq3jw2v"
-path="res://.godot/imported/cursor.handclick.small.wip.png-11986cde81dbd5c4c0d26158115af424.ctex"
+uid="uid://jv4nt3qgxqa5"
+path="res://.godot/imported/icon.budget.50.png-ec7758eba5a84a840304af2b0502a85d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/cursor.handclick.small.wip.png"
-dest_files=["res://.godot/imported/cursor.handclick.small.wip.png-11986cde81dbd5c4c0d26158115af424.ctex"]
+source_file="res://assets/textures/icon.budget.50.png"
+dest_files=["res://.godot/imported/icon.budget.50.png-ec7758eba5a84a840304af2b0502a85d.ctex"]
 
 [params]
 

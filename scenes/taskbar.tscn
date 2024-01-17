@@ -1,0 +1,200 @@
+[gd_scene load_steps=25 format=3 uid="uid://c3wlw1tiujx45"]
+
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_cghew"]
+[ext_resource type="PackedScene" uid="uid://c7kj1dx6eu15q" path="res://scenes/shortcut.tscn" id="2_5rm0r"]
+[ext_resource type="Script" path="res://scripts/taskbar.gd" id="2_xijgr"]
+[ext_resource type="Texture2D" uid="uid://b82cjcrnhqwnk" path="res://assets/textures/icon.email.png" id="3_4fqyv"]
+[ext_resource type="Script" path="res://data/shortcut_data.gd" id="3_xnu30"]
+[ext_resource type="Texture2D" uid="uid://da3hsxs0e2br1" path="res://assets/textures/task_icons.star.png" id="4_bo03p"]
+[ext_resource type="Texture2D" uid="uid://xk8nue6q3wx4" path="res://assets/textures/icon.email.50.png" id="4_ulppa"]
+[ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="5_b3tva"]
+[ext_resource type="Texture2D" uid="uid://ckswasapjbmqg" path="res://assets/textures/task_icons.square.png" id="6_ut1tp"]
+[ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="7_8mmem"]
+[ext_resource type="Texture2D" uid="uid://jv4nt3qgxqa5" path="res://assets/textures/icon.budget.50.png" id="7_qenyc"]
+[ext_resource type="Texture2D" uid="uid://5vvflqfvnjp3" path="res://assets/textures/icon.budget.png" id="8_fyk8y"]
+[ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="8_of7o8"]
+[ext_resource type="Texture2D" uid="uid://b4uu6oipa6gka" path="res://assets/textures/icon.recruiter.50.png" id="9_a2gkp"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="9_r1q1k"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="10_76woj"]
+[ext_resource type="Texture2D" uid="uid://crk56s4em03hn" path="res://assets/textures/icon.recruiter.png" id="10_b3000"]
+[ext_resource type="PackedScene" uid="uid://bge40b3se8kv4" path="res://scenes/shortcut_button.tscn" id="12_rgmqt"]
+
+[sub_resource type="Resource" id="Resource_u270k"]
+script = ExtResource("3_xnu30")
+shortcut_type = 1
+
+[sub_resource type="Resource" id="Resource_knoyi"]
+script = ExtResource("3_xnu30")
+shortcut_type = 2
+
+[sub_resource type="Resource" id="Resource_k7rhh"]
+script = ExtResource("3_xnu30")
+shortcut_type = 3
+
+[sub_resource type="Resource" id="Resource_3g6yl"]
+script = ExtResource("3_xnu30")
+shortcut_type = 4
+
+[sub_resource type="GDScript" id="GDScript_k0ygi"]
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_efsyl"]
+resource_local_to_scene = true
+font = ExtResource("10_76woj")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="taskbar" type="NinePatchRect"]
+anchors_preset = -1
+anchor_left = -0.003
+anchor_top = 0.863
+anchor_right = -0.003
+anchor_bottom = 0.863
+offset_left = 2.304
+offset_top = -6.34998
+offset_right = 773.304
+offset_bottom = 53.65
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_cghew")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource("2_xijgr")
+shortcut_datas = Array[ExtResource("3_xnu30")]([SubResource("Resource_u270k"), SubResource("Resource_knoyi"), SubResource("Resource_k7rhh"), SubResource("Resource_3g6yl")])
+Shortcut_AC = ExtResource("12_rgmqt")
+
+[node name="shortcut_email" parent="." instance=ExtResource("12_rgmqt")]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 14.33
+offset_right = 118.0
+offset_bottom = 114.33
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_ulppa")
+texture_hover = ExtResource("3_4fqyv")
+key = "email"
+
+[node name="shortcut_budget" parent="." instance=ExtResource("12_rgmqt")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 14.0
+offset_right = 155.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("7_qenyc")
+texture_hover = ExtResource("8_fyk8y")
+key = "budget"
+
+[node name="shortcut_recruiter" parent="." instance=ExtResource("12_rgmqt")]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 14.0
+offset_right = 190.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("9_a2gkp")
+texture_hover = ExtResource("10_b3000")
+key = "recruiter"
+
+[node name="shortcut_player" parent="." instance=ExtResource("12_rgmqt")]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 14.0
+offset_right = 225.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+key = "0"
+
+[node name="shortcuts" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 14.0
+offset_right = 260.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+theme_override_constants/separation = 10
+script = SubResource("GDScript_k0ygi")
+
+[node name="icon1" parent="." instance=ExtResource("2_5rm0r")]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 59.0
+offset_bottom = 48.0
+texture = ExtResource("3_4fqyv")
+
+[node name="icon2" parent="." instance=ExtResource("2_5rm0r")]
+visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 48.0
+texture = ExtResource("4_bo03p")
+
+[node name="icon3" parent="." instance=ExtResource("2_5rm0r")]
+visible = false
+layout_mode = 0
+offset_left = 100.0
+offset_top = 8.0
+offset_right = 140.0
+offset_bottom = 48.0
+texture = ExtResource("5_b3tva")
+
+[node name="icon4" parent="." instance=ExtResource("2_5rm0r")]
+visible = false
+layout_mode = 0
+offset_left = 140.0
+offset_top = 8.0
+offset_right = 180.0
+offset_bottom = 48.0
+texture = ExtResource("6_ut1tp")
+
+[node name="icon5" parent="." instance=ExtResource("2_5rm0r")]
+visible = false
+layout_mode = 0
+offset_left = 180.0
+offset_top = 8.0
+offset_right = 220.0
+offset_bottom = 48.0
+texture = ExtResource("7_8mmem")
+
+[node name="icon6" parent="." instance=ExtResource("2_5rm0r")]
+visible = false
+layout_mode = 0
+offset_left = 220.0
+offset_top = 8.0
+offset_right = 260.0
+offset_bottom = 48.0
+texture = ExtResource("8_of7o8")
+
+[node name="clock_label" parent="." instance=ExtResource("9_r1q1k")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -24.0
+offset_right = -20.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "12:00 PM"
+label_settings = SubResource("LabelSettings_efsyl")
+vertical_alignment = 1

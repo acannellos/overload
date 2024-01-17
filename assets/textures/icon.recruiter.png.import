@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba8opbtvsyr8c"
-path="res://.godot/imported/cursor.handclick.small.wip.56.png-19ece1f1c7add8ecd39e8be7728a4861.ctex"
+uid="uid://crk56s4em03hn"
+path="res://.godot/imported/icon.recruiter.png-cd0a7013afbce24690fe5446cb2fb900.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/cursor.handclick.small.wip.56.png"
-dest_files=["res://.godot/imported/cursor.handclick.small.wip.56.png-19ece1f1c7add8ecd39e8be7728a4861.ctex"]
+source_file="res://assets/textures/icon.recruiter.png"
+dest_files=["res://.godot/imported/icon.recruiter.png-cd0a7013afbce24690fe5446cb2fb900.ctex"]
 
 [params]
 

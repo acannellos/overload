@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3 uid="uid://bypgqhg42ffni"]
+
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_fswak"]
+[ext_resource type="Script" path="res://scripts/email.gd" id="2_hlsls"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="4_wh3r3"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="5_8u06g"]
+[ext_resource type="Texture2D" uid="uid://d1oj4bajw5n5e" path="res://assets/textures/panel.corner.png" id="6_uukci"]
+[ext_resource type="Texture2D" uid="uid://t7v0lyl0gi2t" path="res://assets/textures/panel.close.png" id="7_prtbt"]
+[ext_resource type="Texture2D" uid="uid://dp58pw2rhjmjc" path="res://assets/textures/panel.close.red.png" id="8_2od8m"]
+[ext_resource type="Script" path="res://scripts/task_list.gd" id="9_0qrg1"]
+[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="10_s80yo"]
+[ext_resource type="Texture2D" uid="uid://b82cjcrnhqwnk" path="res://assets/textures/icon.email.png" id="11_3rdy6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_holon"]
+resource_local_to_scene = true
+font = ExtResource("5_8u06g")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycyx2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d13l6"]
+resource_local_to_scene = true
+font = ExtResource("5_8u06g")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="email" type="NinePatchRect"]
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 331.0
+offset_bottom = 372.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_fswak")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource("2_hlsls")
+task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null, null])
+title = "email"
+
+[node name="Label" parent="." instance=ExtResource("4_wh3r3")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 18.0
+offset_right = 51.5
+offset_bottom = 75.0
+grow_horizontal = 2
+text = "email"
+label_settings = SubResource("LabelSettings_holon")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="button_corner" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0.0862745)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+disabled = true
+texture_normal = ExtResource("6_uukci")
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 13.0
+offset_right = -15.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ycyx2")
+
+[node name="button_close" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = 21.0
+offset_right = -2.0
+offset_bottom = 61.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("7_prtbt")
+texture_hover = ExtResource("8_2od8m")
+stretch_mode = 3
+
+[node name="task_list" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 35.0
+offset_top = 79.0
+offset_right = -29.0
+offset_bottom = 317.0
+grow_horizontal = 2
+script = ExtResource("9_0qrg1")
+Task = ExtResource("10_s80yo")
+
+[node name="type" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 20.0
+offset_right = 121.0
+offset_bottom = 120.0
+rotation = -0.0872665
+scale = Vector2(0.33, 0.33)
+mouse_filter = 2
+texture = ExtResource("11_3rdy6")
+
+[node name="count_label" parent="." instance=ExtResource("4_wh3r3")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -70.0
+offset_right = 37.5
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0/0"
+label_settings = SubResource("LabelSettings_d13l6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]
