@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c76rjq6nleloo"]
+[gd_scene load_steps=23 format=3 uid="uid://c76rjq6nleloo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_f72pj"]
 [ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="1_s8pgk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://data/task_data.gd" id="4_7bvga"]
 [ext_resource type="PackedScene" uid="uid://bypgqhg42ffni" path="res://scenes/email.tscn" id="4_wosw8"]
 [ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="5_ocy1c"]
+[ext_resource type="PackedScene" uid="uid://dkvki4vntkxur" path="res://scenes/recruiter.tscn" id="6_bhaes"]
 [ext_resource type="Texture2D" uid="uid://dya7e4le0duew" path="res://assets/textures/bg.with.hole.png" id="8_0mu61"]
 [ext_resource type="Texture2D" uid="uid://ce75k6i6od5rh" path="res://assets/textures/decoration.plant.png" id="8_5xric"]
 [ext_resource type="PackedScene" uid="uid://bde4wt6ldv0xp" path="res://scenes/budget.tscn" id="8_cqyp1"]
@@ -83,7 +84,7 @@ offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="windows" type="Panel" parent="screen"]
+[node name="windows" type="Panel" parent="screen" node_paths=PackedStringArray("grabbed_task")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.012
@@ -98,6 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vohn1")
 script = ExtResource("3_w3rwi")
+grabbed_task = NodePath("../../notes/task_grabbed")
 
 [node name="email" parent="screen/windows" instance=ExtResource("4_wosw8")]
 layout_mode = 0
@@ -105,6 +107,20 @@ offset_left = 223.904
 offset_top = 12.67
 offset_right = 523.904
 offset_bottom = 362.67
+
+[node name="budget" parent="screen/windows" instance=ExtResource("8_cqyp1")]
+layout_mode = 0
+offset_left = 132.904
+offset_top = 86.67
+offset_right = 382.904
+offset_bottom = 336.67
+
+[node name="recruiter" parent="screen/windows" instance=ExtResource("6_bhaes")]
+layout_mode = 0
+offset_left = 378.904
+offset_top = 55.67
+offset_right = 678.904
+offset_bottom = 305.67
 
 [node name="player" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
@@ -150,13 +166,6 @@ offset_right = 274.904
 offset_bottom = 520.67
 employee = SubResource("Resource_uxqk3")
 task_datas = Array[ExtResource("4_7bvga")]([null, null])
-
-[node name="budget" parent="screen/windows" instance=ExtResource("8_cqyp1")]
-layout_mode = 0
-offset_left = 132.904
-offset_top = 86.67
-offset_right = 382.904
-offset_bottom = 336.67
 
 [node name="taskbar" parent="screen" instance=ExtResource("8_lqp4a")]
 layout_mode = 1
@@ -229,6 +238,8 @@ offset_bottom = 122.0
 rotation = 0.0872665
 
 [node name="task_grabbed" parent="notes" instance=ExtResource("5_ocy1c")]
+visible = false
+modulate = Color(1, 0.454902, 0.992157, 1)
 layout_mode = 0
 offset_left = 134.0
 offset_top = -150.0

@@ -60,4 +60,5 @@ func _on_panel_gui_input(event):
 			modulate = Color(1,1,1,0.7)
 
 func _on_texture_button_pressed():
+	Events.close_clicked.emit("email")
 	visible = false
