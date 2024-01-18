@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkvki4vntkxur"]
+
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_nd7bt"]
+[ext_resource type="Script" path="res://scripts/recruiter.gd" id="2_wsiix"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="3_b0yjl"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="4_vj3qm"]
+[ext_resource type="Texture2D" uid="uid://d1oj4bajw5n5e" path="res://assets/textures/panel.corner.png" id="5_eu0mp"]
+[ext_resource type="Texture2D" uid="uid://t7v0lyl0gi2t" path="res://assets/textures/panel.close.png" id="6_7v2dy"]
+[ext_resource type="Texture2D" uid="uid://dp58pw2rhjmjc" path="res://assets/textures/panel.close.red.png" id="7_r2fq3"]
+[ext_resource type="Texture2D" uid="uid://crk56s4em03hn" path="res://assets/textures/icon.recruiter.png" id="8_fjn1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_holon"]
+resource_local_to_scene = true
+font = ExtResource("4_vj3qm")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycyx2"]
+
+[node name="recruiter" type="NinePatchRect"]
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 331.0
+offset_bottom = 272.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_nd7bt")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource("2_wsiix")
+
+[node name="Label" parent="." instance=ExtResource("3_b0yjl")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 18.0
+offset_right = 78.0
+offset_bottom = 75.0
+grow_horizontal = 2
+text = "recruiter"
+label_settings = SubResource("LabelSettings_holon")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="button_corner" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0.0862745)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+disabled = true
+texture_normal = ExtResource("5_eu0mp")
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 13.0
+offset_right = -15.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ycyx2")
+
+[node name="button_close" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = 21.0
+offset_right = -2.0
+offset_bottom = 61.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("6_7v2dy")
+texture_hover = ExtResource("7_r2fq3")
+stretch_mode = 3
+
+[node name="type" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 20.0
+offset_right = 121.0
+offset_bottom = 120.0
+rotation = -0.0872665
+scale = Vector2(0.33, 0.33)
+mouse_filter = 2
+texture = ExtResource("8_fjn1k")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]

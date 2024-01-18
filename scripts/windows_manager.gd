@@ -1,12 +1,15 @@
 extends Panel
 
-@export var task_grabbed: TextureButton
+@export var grabbed_task: TextureButton
+var grabbed_task_data: TaskData
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Events.task_clicked.connect(on_task_clicked)
 
+func on_task_clicked(index):
+	grabbed_task.visible = not grabbed_task.visible
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	if grabbed_task.visible:
+		grabbed_task.global_position = get_global_mouse_position() + Vector2(10,10)
+

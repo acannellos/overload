@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bde4wt6ldv0xp"]
+[gd_scene load_steps=14 format=3 uid="uid://bde4wt6ldv0xp"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_nagrd"]
 [ext_resource type="Script" path="res://scripts/budget.gd" id="2_8jxpu"]
@@ -17,10 +17,28 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycyx2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_wo6yo"]
+resource_local_to_scene = true
+font = ExtResource("4_ac2vl")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fr485"]
+resource_local_to_scene = true
+font = ExtResource("4_ac2vl")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rtgl"]
+resource_local_to_scene = true
+font = ExtResource("4_ac2vl")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
 [node name="budget" type="NinePatchRect"]
 offset_left = 31.0
 offset_top = 22.0
-offset_right = 281.0
+offset_right = 331.0
 offset_bottom = 272.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -96,10 +114,25 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 35.0
-offset_top = 79.0
+offset_top = 74.0
 offset_right = -29.0
-offset_bottom = 317.0
+offset_bottom = 221.0
 grow_horizontal = 2
+
+[node name="total" parent="list" instance=ExtResource("3_yx7b5")]
+layout_mode = 2
+text = "Total:"
+label_settings = SubResource("LabelSettings_wo6yo")
+
+[node name="spent" parent="list" instance=ExtResource("3_yx7b5")]
+layout_mode = 2
+text = "Spent:"
+label_settings = SubResource("LabelSettings_fr485")
+
+[node name="left" parent="list" instance=ExtResource("3_yx7b5")]
+layout_mode = 2
+text = "Left:"
+label_settings = SubResource("LabelSettings_2rtgl")
 
 [node name="type" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.470588)
