@@ -16,12 +16,9 @@ extends NinePatchRect
 @onready var task_list = $task_list
 @onready var count_label = $count_label
 
-
 @onready var overload_bar = $overload_bar
 var is_overloaded: bool = false
 
-
-#var is_mouse_pressed = false
 var is_gui_clicked = false
 var prev_mouse_pos: Vector2
 
@@ -53,27 +50,15 @@ func on_shortcut_clicked(key):
 		parent.add_child(self)
 
 func _input(event):
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
-			pass
-	
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
 			is_gui_clicked = false
 			prev_mouse_pos = Vector2.ZERO
 			modulate = Color(1,1,1,1)
 
-#func _physics_process(delta):
-	#
-	#overload_bar.value += 1
-	#print(overload_bar.value)
-
 func _process(delta):
 		
 	overload_bar.value += 1
-	#print(overload_bar.value)
 	
 	if is_gui_clicked:
 		var current_mouse_pos = get_global_mouse_position()
@@ -97,7 +82,6 @@ func set_employee_texture():
 			type.texture = tex_violet
 		Enums.EmployeeType.MAGENTA:
 			type.texture = tex_magenta
-
 
 func _on_panel_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():

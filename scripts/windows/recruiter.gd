@@ -3,6 +3,7 @@ extends NinePatchRect
 @onready var label = $Label
 @onready var panel = $Panel
 
+var window_key = "recruiter"
 var is_gui_clicked = false
 var prev_mouse_pos: Vector2
 
@@ -12,21 +13,15 @@ func _ready():
 		call_deferred("_on_texture_button_pressed")
 
 func on_shortcut_clicked(key):
-	if key == "recruiter":
+	if key == window_key:
 		visible = not visible
 		var parent = get_parent()
 		parent.remove_child(self)
 		parent.add_child(self)
 
 func _input(event):
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
-			pass
-	
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
 			is_gui_clicked = false
 			prev_mouse_pos = Vector2.ZERO
 			modulate = Color(1,1,1,1)
@@ -52,5 +47,5 @@ func _on_panel_gui_input(event):
 			modulate = Color(1,1,1,0.7)
 
 func _on_texture_button_pressed():
-	Events.close_clicked.emit("recruiter")
+	Events.close_clicked.emit(window_key)
 	visible = false

@@ -1,41 +1,31 @@
 extends NinePatchRect
 
 @export var task_datas: Array[TaskData]
-@export var Task: PackedScene
-
-@export var title: String
+var window_key = "email"
 
 @onready var label = $Label
 @onready var panel = $Panel
 @onready var task_list = $task_list
 @onready var count_label = $count_label
 
-#var is_mouse_pressed = false
 var is_gui_clicked = false
 var prev_mouse_pos: Vector2
 
 func _ready():
-	#label.text = title
 	Events.connect("shortcut_clicked", on_shortcut_clicked)
 	count_label.text = "0/" + str(task_datas.size())
 
 func on_shortcut_clicked(key):
 	print(key)
-	if key == "email":
+	if key == window_key:
 		visible = not visible
 		var parent = get_parent()
 		parent.remove_child(self)
 		parent.add_child(self)
 
-func _input(event):
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
-			pass
-	
+func _input(event):	
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
 			is_gui_clicked = false
 			prev_mouse_pos = Vector2.ZERO
 			modulate = Color(1,1,1,1)
@@ -61,9 +51,8 @@ func _on_panel_gui_input(event):
 			modulate = Color(1,1,1,0.7)
 
 func _on_texture_button_pressed():
-	Events.close_clicked.emit("email")
+	Events.close_clicked.emit(window_key)
 	visible = false
-
 
 func _on_timer_timeout():
 	print("timeout")
@@ -79,6 +68,3 @@ func _on_timer_timeout():
 		task_datas[count] = new_task
 		task_list.populate_task_list(task_datas)
 		count_label.text = str(count + 1) + "/" + str(task_datas.size())
-	#var task = Task.instantiate()
-	#task_list.add_child(task)
-	#count_label.text = "0/" + str(task_datas.size())

@@ -1,5 +1,7 @@
 extends NinePatchRect
 
+var window_key = "budget"
+
 @onready var label = $Label
 @onready var panel = $Panel
 
@@ -22,21 +24,15 @@ func _update_list():
 	left.text = "Left: $" + str(Globals.cash_total - Globals.cash_spent)
 
 func on_shortcut_clicked(key):
-	if key == "budget":
+	if key == window_key:
 		visible = not visible
 		var parent = get_parent()
 		parent.remove_child(self)
 		parent.add_child(self)
 
 func _input(event):
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
-			pass
-	
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
 			is_gui_clicked = false
 			prev_mouse_pos = Vector2.ZERO
 			modulate = Color(1,1,1,1)
@@ -62,5 +58,5 @@ func _on_panel_gui_input(event):
 			modulate = Color(1,1,1,0.7)
 
 func _on_texture_button_pressed():
-	Events.close_clicked.emit("budget")
+	Events.close_clicked.emit(window_key)
 	visible = false

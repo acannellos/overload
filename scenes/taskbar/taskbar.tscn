@@ -52,11 +52,20 @@ patch_margin_bottom = 20
 script = ExtResource("2_xijgr")
 Shortcut_AC = ExtResource("12_rgmqt")
 
-[node name="shortcut_email" parent="." instance=ExtResource("12_rgmqt")]
+[node name="shortcut_player" parent="." instance=ExtResource("12_rgmqt")]
 layout_mode = 0
 offset_left = 18.0
-offset_top = 14.33
+offset_top = 14.0
 offset_right = 118.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+key = "0"
+
+[node name="shortcut_email" parent="." instance=ExtResource("12_rgmqt")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 14.33
+offset_right = 155.0
 offset_bottom = 114.33
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("4_ulppa")
@@ -65,9 +74,9 @@ key = "email"
 
 [node name="shortcut_budget" parent="." instance=ExtResource("12_rgmqt")]
 layout_mode = 0
-offset_left = 55.0
+offset_left = 90.0
 offset_top = 14.0
-offset_right = 155.0
+offset_right = 190.0
 offset_bottom = 114.0
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("7_qenyc")
@@ -76,23 +85,14 @@ key = "budget"
 
 [node name="shortcut_recruiter" parent="." instance=ExtResource("12_rgmqt")]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 14.0
-offset_right = 190.0
-offset_bottom = 114.0
-scale = Vector2(0.3, 0.3)
-texture_normal = ExtResource("9_a2gkp")
-texture_hover = ExtResource("10_b3000")
-key = "recruiter"
-
-[node name="shortcut_player" parent="." instance=ExtResource("12_rgmqt")]
-layout_mode = 0
 offset_left = 125.0
 offset_top = 14.0
 offset_right = 225.0
 offset_bottom = 114.0
 scale = Vector2(0.3, 0.3)
-key = "0"
+texture_normal = ExtResource("9_a2gkp")
+texture_hover = ExtResource("10_b3000")
+key = "recruiter"
 
 [node name="shortcuts" type="HBoxContainer" parent="."]
 layout_mode = 0

@@ -8,9 +8,6 @@ extends NinePatchRect
 func _ready():
 	populate_taskbar(shortcut_datas)
 
-func _process(delta):
-	pass
-
 func populate_taskbar(shortcut_datas: Array[ShortcutData]):
 	for child in shortcuts.get_children():
 		child.queue_free()

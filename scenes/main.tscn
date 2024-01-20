@@ -59,33 +59,33 @@ grabbed_task = NodePath("../../notes/task_grabbed")
 
 [node name="email" parent="screen/windows" instance=ExtResource("4_wosw8")]
 layout_mode = 0
-offset_left = 363.904
+offset_left = 393.904
 offset_top = 12.67
-offset_right = 663.904
+offset_right = 693.904
 offset_bottom = 362.67
 
 [node name="budget" parent="screen/windows" instance=ExtResource("8_cqyp1")]
 visible = false
 layout_mode = 0
-offset_left = 132.904
-offset_top = 86.67
-offset_right = 382.904
-offset_bottom = 336.67
+offset_left = 129.904
+offset_top = 72.67
+offset_right = 379.904
+offset_bottom = 322.67
 
 [node name="recruiter" parent="screen/windows" instance=ExtResource("6_bhaes")]
 visible = false
 layout_mode = 0
-offset_left = 378.904
-offset_top = 55.67
-offset_right = 678.904
-offset_bottom = 305.67
+offset_left = 179.904
+offset_top = 124.67
+offset_right = 479.904
+offset_bottom = 374.67
 
 [node name="player" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
-offset_left = 100.904
-offset_top = 16.67
-offset_right = 307.904
-offset_bottom = 360.67
+offset_left = 59.904
+offset_top = 21.67
+offset_right = 266.904
+offset_bottom = 365.67
 employee = SubResource("Resource_lglw3")
 task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null])
 

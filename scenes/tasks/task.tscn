@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlip7jieytqqw"]
+[gd_scene load_steps=14 format=3 uid="uid://dlip7jieytqqw"]
 
 [ext_resource type="Texture2D" uid="uid://djo7i6tgq335t" path="res://assets/textures/pix.bgwhite.png" id="1_c4ypa"]
 [ext_resource type="Texture2D" uid="uid://bpjf4dc5xwx5p" path="res://assets/textures/pix.bgselect.png" id="2_4pt2g"]
@@ -6,8 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="3_4cyge"]
 [ext_resource type="Script" path="res://scripts/tasks/task.gd" id="3_dw0ur"]
 [ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="4_l8ck2"]
+[ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="4_rbbtp"]
+[ext_resource type="Texture2D" uid="uid://ckswasapjbmqg" path="res://assets/textures/task_icons.square.png" id="5_4c8rr"]
 [ext_resource type="Texture2D" uid="uid://cbfvwm00662jy" path="res://assets/textures/bar.under.png" id="5_6in4v"]
+[ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="6_3vfji"]
 [ext_resource type="Texture2D" uid="uid://cnjiawcpulbfs" path="res://assets/textures/bar.over.png" id="6_jqyci"]
+[ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="7_twrkq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qgcdx"]
 resource_local_to_scene = true
@@ -23,6 +27,10 @@ texture_normal = ExtResource("1_c4ypa")
 texture_hover = ExtResource("2_4pt2g")
 stretch_mode = 0
 script = ExtResource("3_dw0ur")
+tex_green = ExtResource("4_rbbtp")
+tex_blue = ExtResource("5_4c8rr")
+tex_violet = ExtResource("6_3vfji")
+tex_magenta = ExtResource("7_twrkq")
 
 [node name="label" parent="." instance=ExtResource("3_4cyge")]
 layout_mode = 2

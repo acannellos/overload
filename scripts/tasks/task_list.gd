@@ -1,33 +1,15 @@
 extends VBoxContainer
 
-#@export var task_datas: Array[TaskData]
 @export var Task: PackedScene
-var player
-
-@export_group("textures")
-@export var tex_green: CompressedTexture2D
-@export var tex_blue: CompressedTexture2D
-@export var tex_violet: CompressedTexture2D
-@export var tex_magenta: CompressedTexture2D
 
 func _ready():
-	#var player = get_parent()
-	#populate_task_list(player.task_datas)
-	#print(get_child_count())
-	#size.y = 50 * get_child_count()
-	
 	call_deferred("handle_ready")
 
 func handle_ready():
-	var player = get_parent()
-	
-	if player.task_datas:
-		populate_task_list(player.task_datas)
-	#print(get_child_count())
+	var owner_window = get_parent()
+	if owner_window.task_datas:
+		populate_task_list(owner_window.task_datas)
 	size.y = 50 * get_child_count()
-
-func _process(delta):
-	pass
 
 func populate_task_list(task_datas: Array[TaskData]):
 	for child in get_children():
@@ -38,14 +20,4 @@ func populate_task_list(task_datas: Array[TaskData]):
 		add_child(task)
 		if task_data:
 			task.is_empty = false
-			match task_data.category:
-				Enums.EmployeeType.GREEN:
-					task.texture_rect.texture = tex_green
-				Enums.EmployeeType.BLUE:
-					task.texture_rect.texture = tex_blue
-				Enums.EmployeeType.VIOLET:
-					task.texture_rect.texture = tex_violet
-				Enums.EmployeeType.MAGENTA:
-					task.texture_rect.texture = tex_magenta
-			
-		#task.set_task_data(task_data)
+			task.set_employee_texture(task_data)
