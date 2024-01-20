@@ -13,10 +13,11 @@ var prev_mouse_pos: Vector2
 
 func _ready():
 	Events.connect("shortcut_clicked", on_shortcut_clicked)
-	count_label.text = "0/" + str(task_datas.size())
+	update_count_label()
+	#count_label.text = "0/" + str(task_datas.size())
 
 func on_shortcut_clicked(key):
-	print(key)
+	#print(key)
 	if key == window_key:
 		visible = not visible
 		var parent = get_parent()
@@ -55,16 +56,36 @@ func _on_texture_button_pressed():
 	visible = false
 
 func _on_timer_timeout():
-	print("timeout")
+	var count = 0
+	for task in task_datas:
+		if not task:
+			var new_task_data = TaskData.new()
+			new_task_data.category = Enums.EmployeeType.GREEN
+			task_datas[count] = new_task_data
+			task_list.populate_task_list(task_datas)
+			update_count_label()
+			return
+		count += 1
+	
+	#
+	#var current_count = count_tasks()
+	#if current_count <= 3:
+		#var new_task_data = TaskData.new()
+		#new_task_data.category = Enums.EmployeeType.GREEN
+		#task_datas[current_count] = new_task_data
+		#task_list.populate_task_list(task_datas)
+		#update_count_label()
+		
+		#var new_count = count_tasks()
+		#count_label.text = str(new_count + 1) + "/" + str(task_datas.size())
+
+func count_tasks() -> int:
 	var count: int = 0
 	for task in task_datas:
 		if task:
 			count += 1
-	
-	if count <= 3:
-		print(count)
-		var new_task = TaskData.new()
-		new_task.category = Enums.EmployeeType.GREEN
-		task_datas[count] = new_task
-		task_list.populate_task_list(task_datas)
-		count_label.text = str(count + 1) + "/" + str(task_datas.size())
+	return count
+
+func update_count_label():
+	var count = count_tasks()
+	count_label.text = str(count) + "/" + str(task_datas.size())
