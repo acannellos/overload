@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://da3hsxs0e2br1" path="res://assets/textures/task_icons.star.png" id="1_4ncsr"]
 [ext_resource type="Texture2D" uid="uid://b41ydci5fg5ep" path="res://assets/textures/task_icons.star.50.png" id="1_dh3uu"]
-[ext_resource type="Script" path="res://scripts/shortcut_button.gd" id="3_ksmee"]
+[ext_resource type="Script" path="res://scripts/taskbar/shortcut.gd" id="3_ksmee"]
 [ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="4_a36fg"]
 [ext_resource type="Texture2D" uid="uid://ckswasapjbmqg" path="res://assets/textures/task_icons.square.png" id="5_hyxbu"]
 [ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="6_o44c5"]

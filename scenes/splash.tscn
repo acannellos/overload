@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bqbcivrqv1yuo"]
 
 [ext_resource type="Script" path="res://scripts/splash.gd" id="1_28bfd"]
-[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="2_2ehh1"]
+[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/windows/panel.tscn" id="2_2ehh1"]
 [ext_resource type="PackedScene" uid="uid://c76rjq6nleloo" path="res://scenes/main.tscn" id="2_4oyjh"]
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="4_q16v8"]
 [ext_resource type="Texture2D" uid="uid://xk8nue6q3wx4" path="res://assets/textures/icon.email.50.png" id="8_0teeu"]
@@ -194,7 +194,6 @@ offset_bottom = 122.0
 rotation = 0.0872665
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

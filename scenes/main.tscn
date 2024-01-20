@@ -1,17 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://c76rjq6nleloo"]
+[gd_scene load_steps=17 format=3 uid="uid://c76rjq6nleloo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_f72pj"]
-[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="1_s8pgk"]
-[ext_resource type="PackedScene" uid="uid://skxrnmiyhs86" path="res://scenes/employee.tscn" id="3_kv5go"]
-[ext_resource type="Script" path="res://scripts/windows_manager.gd" id="3_w3rwi"]
-[ext_resource type="Script" path="res://data/employee_data.gd" id="4_5cj5w"]
-[ext_resource type="PackedScene" uid="uid://bypgqhg42ffni" path="res://scenes/email.tscn" id="4_wosw8"]
-[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="5_ocy1c"]
-[ext_resource type="PackedScene" uid="uid://dkvki4vntkxur" path="res://scenes/recruiter.tscn" id="6_bhaes"]
+[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/windows/panel.tscn" id="1_s8pgk"]
+[ext_resource type="PackedScene" uid="uid://skxrnmiyhs86" path="res://scenes/windows/employee.tscn" id="3_kv5go"]
+[ext_resource type="Script" path="res://scripts/windows/windows_manager.gd" id="3_w3rwi"]
+[ext_resource type="Script" path="res://scripts/windows/employee_data.gd" id="4_5cj5w"]
+[ext_resource type="PackedScene" uid="uid://bypgqhg42ffni" path="res://scenes/windows/email.tscn" id="4_wosw8"]
+[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/tasks/task.tscn" id="5_ocy1c"]
+[ext_resource type="PackedScene" uid="uid://dkvki4vntkxur" path="res://scenes/windows/recruiter.tscn" id="6_bhaes"]
 [ext_resource type="Texture2D" uid="uid://dya7e4le0duew" path="res://assets/textures/bg.with.hole.png" id="8_0mu61"]
 [ext_resource type="Texture2D" uid="uid://ce75k6i6od5rh" path="res://assets/textures/decoration.plant.png" id="8_5xric"]
-[ext_resource type="PackedScene" uid="uid://bde4wt6ldv0xp" path="res://scenes/budget.tscn" id="8_cqyp1"]
-[ext_resource type="PackedScene" uid="uid://c3wlw1tiujx45" path="res://scenes/taskbar.tscn" id="8_lqp4a"]
+[ext_resource type="PackedScene" uid="uid://bde4wt6ldv0xp" path="res://scenes/windows/budget.tscn" id="8_cqyp1"]
+[ext_resource type="PackedScene" uid="uid://c3wlw1tiujx45" path="res://scenes/taskbar/taskbar.tscn" id="8_lqp4a"]
 [ext_resource type="Texture2D" uid="uid://t6ge8qnc86bx" path="res://assets/textures/decoration.fan.png" id="9_svv2g"]
 [ext_resource type="Texture2D" uid="uid://bd8n8m263pjbv" path="res://assets/textures/bg.with.hole.pc.png" id="11_jlkdn"]
 
@@ -22,42 +22,6 @@ script = ExtResource("4_5cj5w")
 name = "baba"
 id = 0
 type = 0
-days_employed = 0
-workload = 0.0
-max_workload = 100.0
-
-[sub_resource type="Resource" id="Resource_n7cwi"]
-script = ExtResource("4_5cj5w")
-name = "shmo"
-id = 1
-type = 1
-days_employed = 0
-workload = 0.0
-max_workload = 100.0
-
-[sub_resource type="Resource" id="Resource_f7vl5"]
-script = ExtResource("4_5cj5w")
-name = "tata"
-id = 2
-type = 2
-days_employed = 0
-workload = 0.0
-max_workload = 100.0
-
-[sub_resource type="Resource" id="Resource_wquqh"]
-script = ExtResource("4_5cj5w")
-name = "huh"
-id = 3
-type = 3
-days_employed = 0
-workload = 0.0
-max_workload = 100.0
-
-[sub_resource type="Resource" id="Resource_uxqk3"]
-script = ExtResource("4_5cj5w")
-name = "qud"
-id = 4
-type = 4
 days_employed = 0
 workload = 0.0
 max_workload = 100.0
@@ -95,12 +59,13 @@ grabbed_task = NodePath("../../notes/task_grabbed")
 
 [node name="email" parent="screen/windows" instance=ExtResource("4_wosw8")]
 layout_mode = 0
-offset_left = 223.904
+offset_left = 363.904
 offset_top = 12.67
-offset_right = 523.904
+offset_right = 663.904
 offset_bottom = 362.67
 
 [node name="budget" parent="screen/windows" instance=ExtResource("8_cqyp1")]
+visible = false
 layout_mode = 0
 offset_left = 132.904
 offset_top = 86.67
@@ -108,6 +73,7 @@ offset_right = 382.904
 offset_bottom = 336.67
 
 [node name="recruiter" parent="screen/windows" instance=ExtResource("6_bhaes")]
+visible = false
 layout_mode = 0
 offset_left = 378.904
 offset_top = 55.67
@@ -116,48 +82,12 @@ offset_bottom = 305.67
 
 [node name="player" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
-offset_left = 12.904
-offset_top = 23.67
-offset_right = 219.904
-offset_bottom = 367.67
+offset_left = 100.904
+offset_top = 16.67
+offset_right = 307.904
+offset_bottom = 360.67
 employee = SubResource("Resource_lglw3")
 task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null])
-
-[node name="employee" parent="screen/windows" instance=ExtResource("3_kv5go")]
-layout_mode = 0
-offset_left = 527.904
-offset_top = 24.67
-offset_right = 734.904
-offset_bottom = 368.67
-employee = SubResource("Resource_n7cwi")
-task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
-
-[node name="employee2" parent="screen/windows" instance=ExtResource("3_kv5go")]
-layout_mode = 0
-offset_left = 406.904
-offset_top = 111.67
-offset_right = 613.904
-offset_bottom = 455.67
-employee = SubResource("Resource_f7vl5")
-task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
-
-[node name="employee3" parent="screen/windows" instance=ExtResource("3_kv5go")]
-layout_mode = 0
-offset_left = 290.904
-offset_top = 200.67
-offset_right = 497.904
-offset_bottom = 544.67
-employee = SubResource("Resource_wquqh")
-task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
-
-[node name="employee4" parent="screen/windows" instance=ExtResource("3_kv5go")]
-layout_mode = 0
-offset_left = 67.904
-offset_top = 176.67
-offset_right = 274.904
-offset_bottom = 520.67
-employee = SubResource("Resource_uxqk3")
-task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
 
 [node name="taskbar" parent="screen" instance=ExtResource("8_lqp4a")]
 layout_mode = 1
@@ -200,7 +130,6 @@ offset_right = 97.0
 offset_bottom = 59.0
 
 [node name="note3" parent="notes" instance=ExtResource("1_s8pgk")]
-visible = false
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
 offset_left = 715.761
@@ -210,7 +139,6 @@ offset_bottom = 312.0
 rotation = 0.0174533
 
 [node name="note2" parent="notes" instance=ExtResource("1_s8pgk")]
-visible = false
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
 offset_left = 716.761
@@ -220,7 +148,6 @@ offset_bottom = 202.0
 rotation = 0.0174533
 
 [node name="note1" parent="notes" instance=ExtResource("1_s8pgk")]
-visible = false
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
 offset_left = 715.761

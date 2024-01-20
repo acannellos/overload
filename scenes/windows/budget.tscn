@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bde4wt6ldv0xp"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_nagrd"]
-[ext_resource type="Script" path="res://scripts/budget.gd" id="2_8jxpu"]
+[ext_resource type="Script" path="res://scripts/windows/budget.gd" id="2_8jxpu"]
 [ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="3_yx7b5"]
 [ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="4_ac2vl"]
 [ext_resource type="Texture2D" uid="uid://d1oj4bajw5n5e" path="res://assets/textures/panel.corner.png" id="5_bfp07"]

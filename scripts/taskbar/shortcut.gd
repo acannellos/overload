@@ -18,9 +18,6 @@ extends TextureButton
 
 func _ready():
 	Events.connect("close_clicked", on_close_clicked)
-	
-	#if task_datas:
-		#task_list.populate_task_list(task_datas)
 
 func on_close_clicked(close_key):
 	if str(close_key) == key:
