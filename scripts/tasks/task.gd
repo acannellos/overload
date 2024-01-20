@@ -1,7 +1,13 @@
 extends TextureButton
 class_name TaskScene
 
-var is_empty: bool = true
+@export var is_empty: bool = true
+
+@export_group("textures")
+@export var tex_green: CompressedTexture2D
+@export var tex_blue: CompressedTexture2D
+@export var tex_violet: CompressedTexture2D
+@export var tex_magenta: CompressedTexture2D
 
 @onready var texture_rect = $TextureRect
 @onready var label = $label
@@ -16,18 +22,11 @@ func handle_ready():
 		label.visible = false
 		texture_progress_bar.visible = false
 		disabled = true
-		#mouse_filter = Control.MOUSE_FILTER_IGNORE
-		#mouse_force_pass_scroll_events = false
 	else:
 		texture_rect.visible = true
 		label.visible = true
 		texture_progress_bar.visible = true
 		disabled = false
-		#mouse_filter = Control.MOUSE_FILTER_STOP
-		#mouse_force_pass_scroll_events = true
-
-func _process(delta):
-	pass
 
 func _on_gui_input(event):
 	#SUPER HACK
@@ -43,6 +42,16 @@ func _on_gui_input(event):
 func set_task_data(task_data: TaskData):
 	print("task data set")
 
+func set_employee_texture(task_data: TaskData):
+	match task_data.category:
+		Enums.EmployeeType.GREEN:
+			texture_rect.texture = tex_green
+		Enums.EmployeeType.BLUE:
+			texture_rect.texture = tex_blue
+		Enums.EmployeeType.VIOLET:
+			texture_rect.texture = tex_violet
+		Enums.EmployeeType.MAGENTA:
+			texture_rect.texture = tex_magenta
 
 #func set_slot_data(slot_data: SlotData) -> void:
 	#var item_data = slot_data.item_data

@@ -1,30 +1,31 @@
 extends NinePatchRect
 
+@export var task_datas: Array[TaskData]
+var window_key = "email"
+
 @onready var label = $Label
 @onready var panel = $Panel
+@onready var task_list = $task_list
+@onready var count_label = $count_label
 
 var is_gui_clicked = false
 var prev_mouse_pos: Vector2
 
 func _ready():
 	Events.connect("shortcut_clicked", on_shortcut_clicked)
+	count_label.text = "0/" + str(task_datas.size())
 
 func on_shortcut_clicked(key):
-	if key == "recruiter":
+	print(key)
+	if key == window_key:
 		visible = not visible
 		var parent = get_parent()
 		parent.remove_child(self)
 		parent.add_child(self)
 
-func _input(event):
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
-			pass
-	
+func _input(event):	
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			#is_mouse_pressed = event.pressed
 			is_gui_clicked = false
 			prev_mouse_pos = Vector2.ZERO
 			modulate = Color(1,1,1,1)
@@ -50,5 +51,20 @@ func _on_panel_gui_input(event):
 			modulate = Color(1,1,1,0.7)
 
 func _on_texture_button_pressed():
-	Events.close_clicked.emit("recruiter")
+	Events.close_clicked.emit(window_key)
 	visible = false
+
+func _on_timer_timeout():
+	print("timeout")
+	var count: int = 0
+	for task in task_datas:
+		if task:
+			count += 1
+	
+	if count <= 3:
+		print(count)
+		var new_task = TaskData.new()
+		new_task.category = Enums.EmployeeType.GREEN
+		task_datas[count] = new_task
+		task_list.populate_task_list(task_datas)
+		count_label.text = str(count + 1) + "/" + str(task_datas.size())

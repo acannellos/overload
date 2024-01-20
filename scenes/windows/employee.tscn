@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://skxrnmiyhs86"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_fsw0k"]
-[ext_resource type="Script" path="res://scripts/window_employee.gd" id="2_kfhrd"]
+[ext_resource type="Script" path="res://scripts/windows/employee.gd" id="2_kfhrd"]
 [ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="3_dr2du"]
 [ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="4_a5w6a"]
 [ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="4_k3rli"]
@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="6_2mxtr"]
 [ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="7_elxbx"]
 [ext_resource type="Texture2D" uid="uid://dp58pw2rhjmjc" path="res://assets/textures/panel.close.red.png" id="7_kdmst"]
-[ext_resource type="Script" path="res://scripts/task_list.gd" id="8_bk1fw"]
+[ext_resource type="Script" path="res://scripts/tasks/task_list.gd" id="8_bk1fw"]
 [ext_resource type="Texture2D" uid="uid://da3hsxs0e2br1" path="res://assets/textures/task_icons.star.png" id="9_itb6j"]
 [ext_resource type="Texture2D" uid="uid://cbfvwm00662jy" path="res://assets/textures/bar.under.png" id="10_3dd6q"]
-[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="10_ox2yh"]
+[ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/tasks/task.tscn" id="10_ox2yh"]
 [ext_resource type="Texture2D" uid="uid://cnjiawcpulbfs" path="res://assets/textures/bar.over.png" id="10_viy3c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ei33e"]

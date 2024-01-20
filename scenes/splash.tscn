@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqbcivrqv1yuo"]
+[gd_scene load_steps=19 format=3 uid="uid://bqbcivrqv1yuo"]
 
 [ext_resource type="Script" path="res://scripts/splash.gd" id="1_28bfd"]
-[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="2_2ehh1"]
+[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/windows/panel.tscn" id="2_2ehh1"]
 [ext_resource type="PackedScene" uid="uid://c76rjq6nleloo" path="res://scenes/main.tscn" id="2_4oyjh"]
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="4_q16v8"]
+[ext_resource type="Texture2D" uid="uid://b41ydci5fg5ep" path="res://assets/textures/task_icons.star.50.png" id="7_e0ofa"]
 [ext_resource type="Texture2D" uid="uid://xk8nue6q3wx4" path="res://assets/textures/icon.email.50.png" id="8_0teeu"]
 [ext_resource type="Texture2D" uid="uid://dya7e4le0duew" path="res://assets/textures/bg.with.hole.png" id="10_q1gf7"]
 [ext_resource type="Texture2D" uid="uid://ce75k6i6od5rh" path="res://assets/textures/decoration.plant.png" id="11_0wpui"]
@@ -86,7 +87,7 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="shortcut_email" type="TextureButton" parent="screen/taskbar"]
+[node name="shortcut_player" type="TextureButton" parent="screen/taskbar"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 14.33
@@ -95,9 +96,9 @@ offset_bottom = 114.33
 scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("8_0teeu")
+texture_normal = ExtResource("7_e0ofa")
 
-[node name="shortcut_budget" type="TextureButton" parent="screen/taskbar"]
+[node name="shortcut_email" type="TextureButton" parent="screen/taskbar"]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 14.0
@@ -106,14 +107,25 @@ offset_bottom = 114.0
 scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("19_bk3qq")
+texture_normal = ExtResource("8_0teeu")
 
-[node name="shortcut_recruiter" type="TextureButton" parent="screen/taskbar"]
+[node name="shortcut_budget" type="TextureButton" parent="screen/taskbar"]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 14.0
 offset_right = 190.0
 offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("19_bk3qq")
+
+[node name="shortcut_recruiter" type="TextureButton" parent="screen/taskbar"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 14.33
+offset_right = 225.0
+offset_bottom = 114.33
 scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -194,7 +206,6 @@ offset_bottom = 122.0
 rotation = 0.0872665
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
