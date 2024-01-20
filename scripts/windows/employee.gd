@@ -95,3 +95,15 @@ func _on_panel_gui_input(event):
 func _on_texture_button_pressed():
 	Events.close_clicked.emit(employee.id)
 	visible = false
+
+func count_tasks() -> int:
+	var count: int = 0
+	for task in task_datas:
+		if task:
+			count += 1
+	return count
+
+func update_count_label():
+	var count = count_tasks()
+	count_label.text = str(count) + "/" + str(task_datas.size())
+

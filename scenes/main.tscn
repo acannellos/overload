@@ -158,7 +158,6 @@ rotation = 0.0872665
 
 [node name="task_grabbed" parent="notes" instance=ExtResource("5_ocy1c")]
 visible = false
-modulate = Color(1, 0.454902, 0.992157, 1)
 layout_mode = 0
 offset_left = 134.0
 offset_top = -150.0

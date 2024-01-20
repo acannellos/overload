@@ -39,9 +39,6 @@ func _on_gui_input(event):
 			print(get_index())
 			#print("button clicked")
 
-func set_task_data(task_data: TaskData):
-	print("task data set")
-
 func set_employee_texture(task_data: TaskData):
 	match task_data.category:
 		Enums.EmployeeType.GREEN:
