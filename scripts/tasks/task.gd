@@ -28,6 +28,15 @@ func handle_ready():
 		texture_progress_bar.visible = true
 		disabled = false
 
+func _process(delta):
+	var parent = get_parent()
+	var gparent = parent.get_parent()
+	
+	if not is_empty and gparent is Employee:
+		print("tick")
+		texture_progress_bar.value += 1
+
+
 func _on_gui_input(event):
 	#SUPER HACK
 	var parent = get_parent()
@@ -49,6 +58,9 @@ func set_employee_texture(task_data: TaskData):
 			texture_rect.texture = tex_violet
 		Enums.EmployeeType.MAGENTA:
 			texture_rect.texture = tex_magenta
+
+func update_progress(v):
+	texture_progress_bar.value = v
 
 #func set_slot_data(slot_data: SlotData) -> void:
 	#var item_data = slot_data.item_data

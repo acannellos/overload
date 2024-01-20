@@ -1,4 +1,5 @@
 extends NinePatchRect
+class_name Employee
 
 @export var employee: EmployeeData
 @export var task_datas: Array[TaskData]
@@ -57,7 +58,16 @@ func _input(event):
 			modulate = Color(1,1,1,1)
 
 func _process(delta):
-		
+	
+	for task in task_datas:
+		if task:
+			task.progress += 1
+			
+	
+	#for task in task_list.get_children():
+		#if not task.is_empty:
+			#task.update_progress()
+	
 	overload_bar.value += 1
 	
 	if is_gui_clicked:
