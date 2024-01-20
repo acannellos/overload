@@ -1,4 +1,5 @@
 extends TextureButton
+class_name TaskScene
 
 var is_empty: bool = true
 
@@ -29,14 +30,30 @@ func _process(delta):
 	pass
 
 func _on_gui_input(event):
+	#SUPER HACK
+	var parent = get_parent()
+	var gparent = parent.get_parent()
+	
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			Events.task_clicked.emit(get_index())
+			Events.task_clicked.emit(gparent, get_index())
 			print(get_index())
 			#print("button clicked")
 
 func set_task_data(task_data: TaskData):
 	print("task data set")
+
+
+#func set_slot_data(slot_data: SlotData) -> void:
+	#var item_data = slot_data.item_data
+	#texture_rect.texture = item_data.texture
+	#tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
+	#
+	#if slot_data.quantity > 1:
+		#quantity_label.text = "%s" % slot_data.quantity
+		#quantity_label.show()
+	#else:
+		#quantity_label.hide()
 
 
 func _on_pressed():

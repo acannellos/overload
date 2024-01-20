@@ -37,6 +37,11 @@ func _ready():
 	
 	Events.connect("shortcut_clicked", on_shortcut_clicked)
 	
+	#var new_task = TaskData.new()
+	#new_task.category = Enums.EmployeeType.GREEN
+	#task_datas[0] = new_task
+	#task_list.populate_task_list(task_datas)
+	
 	#if task_datas:
 		#task_list.populate_task_list(task_datas)
 

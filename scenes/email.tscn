@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bypgqhg42ffni"]
+[gd_scene load_steps=18 format=3 uid="uid://bypgqhg42ffni"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_fswak"]
 [ext_resource type="Script" path="res://scripts/email.gd" id="2_hlsls"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://t7v0lyl0gi2t" path="res://assets/textures/panel.close.png" id="7_prtbt"]
 [ext_resource type="Texture2D" uid="uid://dp58pw2rhjmjc" path="res://assets/textures/panel.close.red.png" id="8_2od8m"]
 [ext_resource type="Script" path="res://scripts/task_list.gd" id="9_0qrg1"]
+[ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="10_d445j"]
 [ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="10_s80yo"]
 [ext_resource type="Texture2D" uid="uid://b82cjcrnhqwnk" path="res://assets/textures/icon.email.png" id="11_3rdy6"]
+[ext_resource type="Texture2D" uid="uid://ckswasapjbmqg" path="res://assets/textures/task_icons.square.png" id="11_cggx7"]
+[ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="12_qeih0"]
+[ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="13_p75ka"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_holon"]
 resource_local_to_scene = true
@@ -39,6 +43,7 @@ patch_margin_right = 20
 patch_margin_bottom = 20
 script = ExtResource("2_hlsls")
 task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null, null])
+Task = ExtResource("10_s80yo")
 title = "email"
 
 [node name="Label" parent="." instance=ExtResource("4_wh3r3")]
@@ -112,6 +117,10 @@ offset_bottom = 317.0
 grow_horizontal = 2
 script = ExtResource("9_0qrg1")
 Task = ExtResource("10_s80yo")
+tex_green = ExtResource("10_d445j")
+tex_blue = ExtResource("11_cggx7")
+tex_violet = ExtResource("12_qeih0")
+tex_magenta = ExtResource("13_p75ka")
 
 [node name="type" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.470588)
@@ -143,7 +152,12 @@ label_settings = SubResource("LabelSettings_d13l6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
 [connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

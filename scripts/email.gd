@@ -1,6 +1,7 @@
 extends NinePatchRect
 
 @export var task_datas: Array[TaskData]
+@export var Task: PackedScene
 
 @export var title: String
 
@@ -62,3 +63,22 @@ func _on_panel_gui_input(event):
 func _on_texture_button_pressed():
 	Events.close_clicked.emit("email")
 	visible = false
+
+
+func _on_timer_timeout():
+	print("timeout")
+	var count: int = 0
+	for task in task_datas:
+		if task:
+			count += 1
+	
+	if count <= 3:
+		print(count)
+		var new_task = TaskData.new()
+		new_task.category = Enums.EmployeeType.GREEN
+		task_datas[count] = new_task
+		task_list.populate_task_list(task_datas)
+		count_label.text = str(count + 1) + "/" + str(task_datas.size())
+	#var task = Task.instantiate()
+	#task_list.add_child(task)
+	#count_label.text = "0/" + str(task_datas.size())
