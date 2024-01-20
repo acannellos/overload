@@ -33,8 +33,11 @@ func _process(delta):
 	var gparent = parent.get_parent()
 	
 	if not is_empty and gparent is Employee:
-		print("tick")
+		#print("tick")
 		texture_progress_bar.value += 1
+		Events.task_progressed.emit()
+		
+		#TODO task complete
 
 
 func _on_gui_input(event):
@@ -49,6 +52,9 @@ func _on_gui_input(event):
 			#print("button clicked")
 
 func set_employee_texture(task_data: TaskData):
+	
+	texture_progress_bar.value = task_data.progress
+	
 	match task_data.category:
 		Enums.EmployeeType.GREEN:
 			texture_rect.texture = tex_green

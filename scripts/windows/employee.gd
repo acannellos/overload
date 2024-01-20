@@ -34,6 +34,7 @@ func _ready():
 	count_label.text = "0/" + str(task_datas.size())
 	
 	Events.connect("shortcut_clicked", on_shortcut_clicked)
+	#Events.connect("task_progressed", on_task_progressed)
 	
 	#var new_task = TaskData.new()
 	#new_task.category = Enums.EmployeeType.GREEN
@@ -42,6 +43,11 @@ func _ready():
 	
 	#if task_datas:
 		#task_list.populate_task_list(task_datas)
+
+#func on_task_progressed():
+	#for task_data in task_datas:
+		#if task_data:
+			#task_data.progress += 1
 
 func on_shortcut_clicked(key):
 	if key == str(employee.id):
