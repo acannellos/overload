@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c76rjq6nleloo"]
+[gd_scene load_steps=21 format=3 uid="uid://c76rjq6nleloo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_f72pj"]
 [ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="1_s8pgk"]
 [ext_resource type="PackedScene" uid="uid://skxrnmiyhs86" path="res://scenes/employee.tscn" id="3_kv5go"]
 [ext_resource type="Script" path="res://scripts/windows_manager.gd" id="3_w3rwi"]
 [ext_resource type="Script" path="res://data/employee_data.gd" id="4_5cj5w"]
-[ext_resource type="Script" path="res://data/task_data.gd" id="4_7bvga"]
 [ext_resource type="PackedScene" uid="uid://bypgqhg42ffni" path="res://scenes/email.tscn" id="4_wosw8"]
 [ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/task.tscn" id="5_ocy1c"]
 [ext_resource type="PackedScene" uid="uid://dkvki4vntkxur" path="res://scenes/recruiter.tscn" id="6_bhaes"]
@@ -26,13 +25,6 @@ type = 0
 days_employed = 0
 workload = 0.0
 max_workload = 100.0
-
-[sub_resource type="Resource" id="Resource_mv76o"]
-script = ExtResource("4_7bvga")
-name = "task"
-category = 0
-progress = 0.0
-goal = 100.0
 
 [sub_resource type="Resource" id="Resource_n7cwi"]
 script = ExtResource("4_5cj5w")
@@ -129,7 +121,7 @@ offset_top = 23.67
 offset_right = 219.904
 offset_bottom = 367.67
 employee = SubResource("Resource_lglw3")
-task_datas = Array[ExtResource("4_7bvga")]([SubResource("Resource_mv76o"), null, null])
+task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null])
 
 [node name="employee" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
@@ -138,7 +130,7 @@ offset_top = 24.67
 offset_right = 734.904
 offset_bottom = 368.67
 employee = SubResource("Resource_n7cwi")
-task_datas = Array[ExtResource("4_7bvga")]([null, null])
+task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
 
 [node name="employee2" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
@@ -147,7 +139,7 @@ offset_top = 111.67
 offset_right = 613.904
 offset_bottom = 455.67
 employee = SubResource("Resource_f7vl5")
-task_datas = Array[ExtResource("4_7bvga")]([null, null])
+task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
 
 [node name="employee3" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
@@ -156,7 +148,7 @@ offset_top = 200.67
 offset_right = 497.904
 offset_bottom = 544.67
 employee = SubResource("Resource_wquqh")
-task_datas = Array[ExtResource("4_7bvga")]([null, null])
+task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
 
 [node name="employee4" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
@@ -165,7 +157,7 @@ offset_top = 176.67
 offset_right = 274.904
 offset_bottom = 520.67
 employee = SubResource("Resource_uxqk3")
-task_datas = Array[ExtResource("4_7bvga")]([null, null])
+task_datas = Array[Resource("res://data/task_data.gd")]([null, null])
 
 [node name="taskbar" parent="screen" instance=ExtResource("8_lqp4a")]
 layout_mode = 1

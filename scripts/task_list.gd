@@ -4,6 +4,12 @@ extends VBoxContainer
 @export var Task: PackedScene
 var player
 
+@export_group("textures")
+@export var tex_green: CompressedTexture2D
+@export var tex_blue: CompressedTexture2D
+@export var tex_violet: CompressedTexture2D
+@export var tex_magenta: CompressedTexture2D
+
 func _ready():
 	#var player = get_parent()
 	#populate_task_list(player.task_datas)
@@ -32,5 +38,14 @@ func populate_task_list(task_datas: Array[TaskData]):
 		add_child(task)
 		if task_data:
 			task.is_empty = false
+			match task_data.category:
+				Enums.EmployeeType.GREEN:
+					task.texture_rect.texture = tex_green
+				Enums.EmployeeType.BLUE:
+					task.texture_rect.texture = tex_blue
+				Enums.EmployeeType.VIOLET:
+					task.texture_rect.texture = tex_violet
+				Enums.EmployeeType.MAGENTA:
+					task.texture_rect.texture = tex_magenta
 			
 		#task.set_task_data(task_data)

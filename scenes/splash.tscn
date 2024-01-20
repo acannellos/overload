@@ -1,0 +1,200 @@
+[gd_scene load_steps=18 format=3 uid="uid://bqbcivrqv1yuo"]
+
+[ext_resource type="Script" path="res://scripts/splash.gd" id="1_28bfd"]
+[ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/panel.tscn" id="2_2ehh1"]
+[ext_resource type="PackedScene" uid="uid://c76rjq6nleloo" path="res://scenes/main.tscn" id="2_4oyjh"]
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="4_q16v8"]
+[ext_resource type="Texture2D" uid="uid://xk8nue6q3wx4" path="res://assets/textures/icon.email.50.png" id="8_0teeu"]
+[ext_resource type="Texture2D" uid="uid://dya7e4le0duew" path="res://assets/textures/bg.with.hole.png" id="10_q1gf7"]
+[ext_resource type="Texture2D" uid="uid://ce75k6i6od5rh" path="res://assets/textures/decoration.plant.png" id="11_0wpui"]
+[ext_resource type="Texture2D" uid="uid://t6ge8qnc86bx" path="res://assets/textures/decoration.fan.png" id="12_qaewg"]
+[ext_resource type="Texture2D" uid="uid://bd8n8m263pjbv" path="res://assets/textures/bg.with.hole.pc.png" id="13_5kal4"]
+[ext_resource type="Texture2D" uid="uid://c76c7cr488rwx" path="res://assets/textures/splash.png" id="15_nboqj"]
+[ext_resource type="Texture2D" uid="uid://jv4nt3qgxqa5" path="res://assets/textures/icon.budget.50.png" id="19_bk3qq"]
+[ext_resource type="Texture2D" uid="uid://b4uu6oipa6gka" path="res://assets/textures/icon.recruiter.50.png" id="21_6juxb"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="23_38wvo"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="24_14j5p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vohn1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4k76q"]
+resource_local_to_scene = true
+font = ExtResource("24_14j5p")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_efsyl"]
+resource_local_to_scene = true
+font = ExtResource("24_14j5p")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="splash" type="CanvasLayer"]
+script = ExtResource("1_28bfd")
+main_scene = ExtResource("2_4oyjh")
+
+[node name="screen" parent="." instance=ExtResource("2_2ehh1")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = 55.0
+offset_right = -102.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="windows" type="Panel" parent="screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.03
+anchor_right = 0.98
+anchor_bottom = 0.886
+offset_left = -0.12
+offset_top = -0.17
+offset_right = 0.200012
+offset_bottom = 0.04599
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vohn1")
+
+[node name="label" parent="screen/windows" instance=ExtResource("23_38wvo")]
+layout_mode = 0
+offset_left = 245.904
+offset_top = 197.67
+offset_right = 495.904
+offset_bottom = 246.67
+text = "Made with Godot"
+label_settings = SubResource("LabelSettings_4k76q")
+
+[node name="taskbar" type="NinePatchRect" parent="screen"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("4_q16v8")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="shortcut_email" type="TextureButton" parent="screen/taskbar"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 14.33
+offset_right = 118.0
+offset_bottom = 114.33
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_0teeu")
+
+[node name="shortcut_budget" type="TextureButton" parent="screen/taskbar"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 14.0
+offset_right = 155.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("19_bk3qq")
+
+[node name="shortcut_recruiter" type="TextureButton" parent="screen/taskbar"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 14.0
+offset_right = 190.0
+offset_bottom = 114.0
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("21_6juxb")
+
+[node name="clock_label" parent="screen/taskbar" instance=ExtResource("23_38wvo")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -24.0
+offset_right = -20.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "12:00 PM"
+label_settings = SubResource("LabelSettings_efsyl")
+vertical_alignment = 1
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="bg" type="Sprite2D" parent="sprites"]
+texture = ExtResource("10_q1gf7")
+centered = false
+
+[node name="plant" type="Sprite2D" parent="sprites"]
+position = Vector2(953, 356)
+texture = ExtResource("11_0wpui")
+
+[node name="fan" type="Sprite2D" parent="sprites"]
+position = Vector2(39, 418)
+texture = ExtResource("12_qaewg")
+
+[node name="pc" type="Sprite2D" parent="sprites"]
+texture = ExtResource("13_5kal4")
+centered = false
+
+[node name="splash" type="Sprite2D" parent="sprites"]
+position = Vector2(463, 220)
+texture = ExtResource("15_nboqj")
+
+[node name="notes" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 59.0
+offset_right = 97.0
+offset_bottom = 59.0
+
+[node name="note3" parent="notes" instance=ExtResource("2_2ehh1")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 715.761
+offset_top = 200.0
+offset_right = 823.761
+offset_bottom = 312.0
+rotation = 0.0174533
+
+[node name="note2" parent="notes" instance=ExtResource("2_2ehh1")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 716.761
+offset_top = 90.0
+offset_right = 824.761
+offset_bottom = 202.0
+rotation = 0.0174533
+
+[node name="note1" parent="notes" instance=ExtResource("2_2ehh1")]
+modulate = Color(1, 1, 0.784314, 1)
+layout_mode = 0
+offset_left = 715.761
+offset_top = 10.0
+offset_right = 823.761
+offset_bottom = 122.0
+rotation = 0.0872665
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
