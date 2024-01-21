@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c76rjq6nleloo"]
+[gd_scene load_steps=23 format=3 uid="uid://c76rjq6nleloo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_f72pj"]
 [ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/windows/panel.tscn" id="1_s8pgk"]
@@ -14,17 +14,33 @@
 [ext_resource type="PackedScene" uid="uid://c3wlw1tiujx45" path="res://scenes/taskbar/taskbar.tscn" id="8_lqp4a"]
 [ext_resource type="Texture2D" uid="uid://t6ge8qnc86bx" path="res://assets/textures/decoration.fan.png" id="9_svv2g"]
 [ext_resource type="Texture2D" uid="uid://bd8n8m263pjbv" path="res://assets/textures/bg.with.hole.pc.png" id="11_jlkdn"]
+[ext_resource type="Script" path="res://scripts/notes.gd" id="14_rhp3r"]
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="15_1nwec"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="16_b7iuy"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="17_cleb6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vohn1"]
 
 [sub_resource type="Resource" id="Resource_lglw3"]
 script = ExtResource("4_5cj5w")
-name = "baba"
+name = "you"
 id = 0
 type = 0
 days_employed = 0
 workload = 0.0
 max_workload = 100.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_sgyf8"]
+resource_local_to_scene = true
+font = ExtResource("17_cleb6")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f885q"]
+resource_local_to_scene = true
+font = ExtResource("17_cleb6")
+font_size = 52
+font_color = Color(0, 0, 0, 1)
 
 [node name="main" type="CanvasLayer"]
 script = ExtResource("1_f72pj")
@@ -59,33 +75,31 @@ grabbed_task = NodePath("../../notes/task_grabbed")
 
 [node name="email" parent="screen/windows" instance=ExtResource("4_wosw8")]
 layout_mode = 0
-offset_left = 393.904
+offset_left = 403.904
 offset_top = 12.67
-offset_right = 693.904
+offset_right = 703.904
 offset_bottom = 362.67
 
-[node name="budget" parent="screen/windows" instance=ExtResource("8_cqyp1")]
-visible = false
-layout_mode = 0
-offset_left = 129.904
-offset_top = 72.67
-offset_right = 379.904
-offset_bottom = 322.67
-
 [node name="recruiter" parent="screen/windows" instance=ExtResource("6_bhaes")]
-visible = false
 layout_mode = 0
-offset_left = 179.904
-offset_top = 124.67
-offset_right = 479.904
-offset_bottom = 374.67
+offset_left = 42.904
+offset_top = 96.67
+offset_right = 342.904
+offset_bottom = 346.67
+
+[node name="budget" parent="screen/windows" instance=ExtResource("8_cqyp1")]
+layout_mode = 0
+offset_left = 100.904
+offset_top = 51.67
+offset_right = 350.904
+offset_bottom = 301.67
 
 [node name="player" parent="screen/windows" instance=ExtResource("3_kv5go")]
 layout_mode = 0
-offset_left = 59.904
-offset_top = 21.67
-offset_right = 266.904
-offset_bottom = 365.67
+offset_left = 165.904
+offset_top = 13.67
+offset_right = 372.904
+offset_bottom = 357.67
 employee = SubResource("Resource_lglw3")
 task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null])
 
@@ -128,6 +142,7 @@ offset_left = 97.0
 offset_top = 59.0
 offset_right = 97.0
 offset_bottom = 59.0
+script = ExtResource("14_rhp3r")
 
 [node name="note3" parent="notes" instance=ExtResource("1_s8pgk")]
 modulate = Color(1, 1, 0.784314, 1)
@@ -141,20 +156,49 @@ rotation = 0.0174533
 [node name="note2" parent="notes" instance=ExtResource("1_s8pgk")]
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
-offset_left = 716.761
+offset_left = 716.0
 offset_top = 90.0
-offset_right = 824.761
+offset_right = 824.0
 offset_bottom = 202.0
 rotation = 0.0174533
 
-[node name="note1" parent="notes" instance=ExtResource("1_s8pgk")]
+[node name="note" type="NinePatchRect" parent="notes"]
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
-offset_left = 715.761
-offset_top = 10.0
-offset_right = 823.761
-offset_bottom = 122.0
+offset_left = 723.0
+offset_top = 2.99999
+offset_right = 831.0
+offset_bottom = 115.0
 rotation = 0.0872665
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("15_1nwec")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="label" parent="notes/note" instance=ExtResource("16_b7iuy")]
+layout_mode = 0
+offset_left = 19.5875
+offset_top = 17.3589
+offset_right = 83.5875
+offset_bottom = 60.3589
+text = "Done"
+label_settings = SubResource("LabelSettings_sgyf8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="done_count" parent="notes/note" instance=ExtResource("16_b7iuy")]
+layout_mode = 0
+offset_left = 34.3683
+offset_top = 37.146
+offset_right = 74.3683
+offset_bottom = 97.146
+text = "0"
+label_settings = SubResource("LabelSettings_f885q")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="task_grabbed" parent="notes" instance=ExtResource("5_ocy1c")]
 visible = false

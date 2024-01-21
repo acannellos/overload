@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bde4wt6ldv0xp"]
+[gd_scene load_steps=15 format=3 uid="uid://bde4wt6ldv0xp"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_nagrd"]
 [ext_resource type="Script" path="res://scripts/windows/budget.gd" id="2_8jxpu"]
+[ext_resource type="Script" path="res://scripts/windows/window_component.gd" id="3_k7fdq"]
 [ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="3_yx7b5"]
 [ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="4_ac2vl"]
 [ext_resource type="Texture2D" uid="uid://d1oj4bajw5n5e" path="res://assets/textures/panel.corner.png" id="5_bfp07"]
@@ -48,6 +49,10 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 script = ExtResource("2_8jxpu")
+
+[node name="WindowComponent" type="Node" parent="."]
+script = ExtResource("3_k7fdq")
+window_key = "budget"
 
 [node name="Label" parent="." instance=ExtResource("3_yx7b5")]
 layout_mode = 1
@@ -118,6 +123,7 @@ offset_top = 74.0
 offset_right = -29.0
 offset_bottom = 221.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="total" parent="list" instance=ExtResource("3_yx7b5")]
 layout_mode = 2
@@ -149,4 +155,6 @@ texture = ExtResource("8_25cw6")
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="gui_input" from="Panel" to="WindowComponent" method="_on_panel_gui_input"]
 [connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="button_close" to="WindowComponent" method="_on_button_close_pressed"]
