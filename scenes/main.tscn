@@ -1,11 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://c76rjq6nleloo"]
+[gd_scene load_steps=29 format=3 uid="uid://c76rjq6nleloo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_f72pj"]
 [ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/windows/panel.tscn" id="1_s8pgk"]
+[ext_resource type="Script" path="res://scripts/windows/screen_manager.gd" id="3_gwiio"]
 [ext_resource type="PackedScene" uid="uid://skxrnmiyhs86" path="res://scenes/windows/employee.tscn" id="3_kv5go"]
 [ext_resource type="Script" path="res://scripts/windows/windows_manager.gd" id="3_w3rwi"]
 [ext_resource type="Script" path="res://scripts/windows/employee_data.gd" id="4_5cj5w"]
 [ext_resource type="PackedScene" uid="uid://bypgqhg42ffni" path="res://scenes/windows/email.tscn" id="4_wosw8"]
+[ext_resource type="PackedScene" uid="uid://bge40b3se8kv4" path="res://scenes/taskbar/shortcut.tscn" id="5_5a8t8"]
 [ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/tasks/task.tscn" id="5_ocy1c"]
 [ext_resource type="PackedScene" uid="uid://dkvki4vntkxur" path="res://scenes/windows/recruiter.tscn" id="6_bhaes"]
 [ext_resource type="Texture2D" uid="uid://dya7e4le0duew" path="res://assets/textures/bg.with.hole.png" id="8_0mu61"]
@@ -79,6 +81,9 @@ offset_right = -102.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_gwiio")
+EmployeeScene = ExtResource("3_kv5go")
+ShortcutScene = ExtResource("5_5a8t8")
 
 [node name="windows" type="Panel" parent="screen" node_paths=PackedStringArray("grabbed_task")]
 layout_mode = 1

@@ -8,3 +8,5 @@ signal task_completed(value)
 
 signal shortcut_clicked(string)
 signal close_clicked(string)
+
+signal employee_hired(type)

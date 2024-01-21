@@ -1,8 +1,10 @@
 extends NinePatchRect
 class_name Employee
 
-@export var employee: EmployeeData
+@export var employee: EmployeeData = EmployeeData.new()
 @export var task_datas: Array[TaskData]
+
+@onready var window_component = $WindowComponent
 
 @export_group("textures")
 @export var tex_player: CompressedTexture2D
@@ -25,15 +27,26 @@ var overload_color : Color = Color(0.8627, 0.1961, 0.1843, 1.0)
 var start_color : Color = Color(1.0, 1.0, 1.0, 1.0)
 
 func _ready():
+	#if employee:
+		#label.text = employee.name
+	#set_employee_texture()
+	#
+	#if not employee.type == Enums.EmployeeType.PLAYER:
+		#size.y = 300
+	#update_count_label()
+	call_deferred("handle_ready")
+
+func handle_ready():
 	if employee:
 		label.text = employee.name
+		window_component.window_key = str(employee.id)
 	set_employee_texture()
 	
 	if not employee.type == Enums.EmployeeType.PLAYER:
 		size.y = 300
 	
 	update_count_label()
-
+	
 func _process(delta):
 	var i = 0
 	for task in task_datas:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3wlw1tiujx45"]
+[gd_scene load_steps=13 format=3 uid="uid://c3wlw1tiujx45"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_cghew"]
 [ext_resource type="Script" path="res://scripts/taskbar/taskbar.gd" id="2_xijgr"]
@@ -11,20 +11,6 @@
 [ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="10_76woj"]
 [ext_resource type="Texture2D" uid="uid://crk56s4em03hn" path="res://assets/textures/icon.recruiter.png" id="10_b3000"]
 [ext_resource type="PackedScene" uid="uid://bge40b3se8kv4" path="res://scenes/taskbar/shortcut.tscn" id="12_rgmqt"]
-
-[sub_resource type="GDScript" id="GDScript_k0ygi"]
-script/source = "extends HBoxContainer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="LabelSettings" id="LabelSettings_efsyl"]
 resource_local_to_scene = true
@@ -102,7 +88,6 @@ offset_right = 260.0
 offset_bottom = 114.0
 scale = Vector2(0.3, 0.3)
 theme_override_constants/separation = 10
-script = SubResource("GDScript_k0ygi")
 
 [node name="clock_label" parent="." instance=ExtResource("9_r1q1k")]
 layout_mode = 1

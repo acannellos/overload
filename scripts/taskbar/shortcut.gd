@@ -41,3 +41,4 @@ func set_employee_texture(shortcut_data: ShortcutData):
 func _on_pressed():
 	Events.shortcut_clicked.emit(key)
 	blip.visible = not blip.visible
+	#print(key)

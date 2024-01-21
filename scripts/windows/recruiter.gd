@@ -8,18 +8,14 @@ func _ready():
 func update_cost():
 	cost_label.text = "$" + str(Globals.hire_cost) + " to hire"
 
-
 func _on_hire_green_pressed():
-	pass # Replace with function body.
-
+	Events.employee_hired.emit(Enums.EmployeeType.GREEN)
 
 func _on_hire_blue_pressed():
-	pass # Replace with function body.
-
+	Events.employee_hired.emit(Enums.EmployeeType.BLUE)
 
 func _on_hire_violet_pressed():
-	pass # Replace with function body.
-
+	Events.employee_hired.emit(Enums.EmployeeType.VIOLET)
 
 func _on_hire_magenta_pressed():
-	pass # Replace with function body.
+	Events.employee_hired.emit(Enums.EmployeeType.MAGENTA)
