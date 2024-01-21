@@ -33,8 +33,11 @@ func _process(delta):
 	var gparent = parent.get_parent()
 	
 	if not is_empty and gparent is Employee:
-		print("tick")
+		#print("tick")
 		texture_progress_bar.value += 1
+		Events.task_progressed.emit()
+		
+		#TODO task complete
 
 
 func _on_gui_input(event):
@@ -45,10 +48,13 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			Events.task_clicked.emit(gparent, get_index())
-			print(get_index())
+			#print(get_index())
 			#print("button clicked")
 
 func set_employee_texture(task_data: TaskData):
+	
+	texture_progress_bar.value = task_data.progress
+	
 	match task_data.category:
 		Enums.EmployeeType.GREEN:
 			texture_rect.texture = tex_green
@@ -61,18 +67,6 @@ func set_employee_texture(task_data: TaskData):
 
 func update_progress(v):
 	texture_progress_bar.value = v
-
-#func set_slot_data(slot_data: SlotData) -> void:
-	#var item_data = slot_data.item_data
-	#texture_rect.texture = item_data.texture
-	#tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
-	#
-	#if slot_data.quantity > 1:
-		#quantity_label.text = "%s" % slot_data.quantity
-		#quantity_label.show()
-	#else:
-		#quantity_label.hide()
-
 
 func _on_pressed():
 	print("button pressed")

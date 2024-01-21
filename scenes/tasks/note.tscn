@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://duolegspdgb8k"]
+
+[ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_ru7od"]
+[ext_resource type="PackedScene" uid="uid://c4e081k54h20x" path="res://scenes/label.tscn" id="2_rh3rx"]
+[ext_resource type="FontFile" uid="uid://cwl80ym5go76r" path="res://assets/fonts/NanumPenScript-Regular.ttf" id="3_fxkyd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sgyf8"]
+resource_local_to_scene = true
+font = ExtResource("3_fxkyd")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f885q"]
+resource_local_to_scene = true
+font = ExtResource("3_fxkyd")
+font_size = 52
+font_color = Color(0, 0, 0, 1)
+
+[node name="note" type="NinePatchRect"]
+modulate = Color(1, 1, 0.784314, 1)
+offset_right = 108.0
+offset_bottom = 112.0
+rotation = 0.0872665
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_ru7od")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="label" parent="." instance=ExtResource("2_rh3rx")]
+layout_mode = 0
+offset_left = 19.5875
+offset_top = 17.3589
+offset_right = 83.5875
+offset_bottom = 60.3589
+text = "Done"
+label_settings = SubResource("LabelSettings_sgyf8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label2" parent="." instance=ExtResource("2_rh3rx")]
+layout_mode = 0
+offset_left = 34.3683
+offset_top = 37.146
+offset_right = 74.3683
+offset_bottom = 97.146
+text = "0"
+label_settings = SubResource("LabelSettings_f885q")
+horizontal_alignment = 1
+vertical_alignment = 1

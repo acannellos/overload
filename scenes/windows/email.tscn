@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bypgqhg42ffni"]
+[gd_scene load_steps=15 format=3 uid="uid://bypgqhg42ffni"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_fswak"]
 [ext_resource type="Script" path="res://scripts/windows/email.gd" id="2_hlsls"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/tasks/task_list.gd" id="9_0qrg1"]
 [ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/tasks/task.tscn" id="10_s80yo"]
 [ext_resource type="Texture2D" uid="uid://b82cjcrnhqwnk" path="res://assets/textures/icon.email.png" id="11_3rdy6"]
+[ext_resource type="Script" path="res://scripts/windows/window_component.gd" id="11_mp5x7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_holon"]
 resource_local_to_scene = true
@@ -39,6 +40,10 @@ patch_margin_right = 20
 patch_margin_bottom = 20
 script = ExtResource("2_hlsls")
 task_datas = Array[Resource("res://data/task_data.gd")]([null, null, null, null])
+
+[node name="window_component" type="Node" parent="."]
+script = ExtResource("11_mp5x7")
+window_key = "email"
 
 [node name="Label" parent="." instance=ExtResource("4_wh3r3")]
 layout_mode = 1
@@ -149,5 +154,7 @@ autostart = true
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="gui_input" from="Panel" to="window_component" method="_on_panel_gui_input"]
 [connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="button_close" to="window_component" method="_on_button_close_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

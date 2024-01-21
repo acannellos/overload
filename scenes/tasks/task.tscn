@@ -52,6 +52,7 @@ offset_right = -10.0
 offset_bottom = 45.0
 grow_horizontal = 2
 scale = Vector2(1, 0.7)
+max_value = 1000.0
 nine_patch_stretch = true
 stretch_margin_left = 10
 stretch_margin_top = 10

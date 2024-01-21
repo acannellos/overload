@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://skxrnmiyhs86"]
+[gd_scene load_steps=22 format=3 uid="uid://skxrnmiyhs86"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_fsw0k"]
 [ext_resource type="Script" path="res://scripts/windows/employee.gd" id="2_kfhrd"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="7_elxbx"]
 [ext_resource type="Texture2D" uid="uid://dp58pw2rhjmjc" path="res://assets/textures/panel.close.red.png" id="7_kdmst"]
 [ext_resource type="Script" path="res://scripts/tasks/task_list.gd" id="8_bk1fw"]
+[ext_resource type="Script" path="res://scripts/windows/window_component.gd" id="8_d5t50"]
 [ext_resource type="Texture2D" uid="uid://da3hsxs0e2br1" path="res://assets/textures/task_icons.star.png" id="9_itb6j"]
 [ext_resource type="Texture2D" uid="uid://cbfvwm00662jy" path="res://assets/textures/bar.under.png" id="10_3dd6q"]
 [ext_resource type="PackedScene" uid="uid://dlip7jieytqqw" path="res://scenes/tasks/task.tscn" id="10_ox2yh"]
@@ -24,6 +25,12 @@ font_size = 42
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycyx2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_siyav"]
+resource_local_to_scene = true
+font = ExtResource("4_k3rli")
+font_size = 32
+font_color = Color(0, 0, 0, 0.392157)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3mki7"]
 resource_local_to_scene = true
@@ -49,6 +56,10 @@ tex_green = ExtResource("4_a5w6a")
 tex_blue = ExtResource("5_sic4t")
 tex_violet = ExtResource("6_2mxtr")
 tex_magenta = ExtResource("7_elxbx")
+
+[node name="WindowComponent" type="Node" parent="."]
+script = ExtResource("8_d5t50")
+window_key = "0"
 
 [node name="Label" parent="." instance=ExtResource("3_dr2du")]
 layout_mode = 1
@@ -148,7 +159,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 0.7)
 mouse_filter = 2
-max_value = 2000.0
+max_value = 3500.0
 nine_patch_stretch = true
 stretch_margin_left = 10
 stretch_margin_top = 10
@@ -156,6 +167,22 @@ stretch_margin_right = 10
 stretch_margin_bottom = 10
 texture_under = ExtResource("10_3dd6q")
 texture_progress = ExtResource("10_viy3c")
+
+[node name="label" parent="overload_bar" instance=ExtResource("3_dr2du")]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_right = 49.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "workload"
+label_settings = SubResource("LabelSettings_siyav")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="count_label" parent="." instance=ExtResource("3_dr2du")]
 layout_mode = 1
@@ -178,4 +205,6 @@ vertical_alignment = 1
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="gui_input" from="Panel" to="WindowComponent" method="_on_panel_gui_input"]
 [connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="button_close" to="WindowComponent" method="_on_button_close_pressed"]
