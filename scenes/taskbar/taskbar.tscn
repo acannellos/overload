@@ -102,6 +102,6 @@ offset_right = -20.0
 offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "12:00 PM"
+text = "8:00 AM"
 label_settings = SubResource("LabelSettings_efsyl")
 vertical_alignment = 1

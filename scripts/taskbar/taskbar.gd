@@ -4,6 +4,8 @@ extends NinePatchRect
 @export var Shortcut_AC: PackedScene
 
 @onready var shortcuts = $shortcuts
+@onready var clock_label = $clock_label
+
 
 func _ready():
 	populate_taskbar(shortcut_datas)

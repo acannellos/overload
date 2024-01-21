@@ -4,7 +4,7 @@ signal task_clicked(owner_window, index)
 signal task_deleted(owner_window, index)
 
 signal task_progressed
-signal task_completed(value)
+signal task_completed()
 
 signal shortcut_clicked(string)
 signal close_clicked(string)

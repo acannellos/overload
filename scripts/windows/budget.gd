@@ -7,6 +7,14 @@ extends NinePatchRect
 func _ready():
 	_update_list()
 	handle_ready()
+	Events.connect("task_completed", on_task_completed)
+	Events.connect("employee_hired", on_employee_hired)
+
+func on_task_completed():
+	_update_list()
+
+func on_employee_hired(type):
+	_update_list()
 
 func handle_ready():
 	Events.close_clicked.emit("budget")

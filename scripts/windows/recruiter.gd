@@ -9,13 +9,21 @@ func update_cost():
 	cost_label.text = "$" + str(Globals.hire_cost) + " to hire"
 
 func _on_hire_green_pressed():
-	Events.employee_hired.emit(Enums.EmployeeType.GREEN)
+	if Globals.cash_total - Globals.cash_spent >= Globals.hire_cost:
+		Globals.cash_spent += Globals.hire_cost
+		Events.employee_hired.emit(Enums.EmployeeType.GREEN)
 
 func _on_hire_blue_pressed():
-	Events.employee_hired.emit(Enums.EmployeeType.BLUE)
+	if Globals.cash_total - Globals.cash_spent >= Globals.hire_cost:
+		Globals.cash_spent += Globals.hire_cost
+		Events.employee_hired.emit(Enums.EmployeeType.BLUE)
 
 func _on_hire_violet_pressed():
-	Events.employee_hired.emit(Enums.EmployeeType.VIOLET)
+	if Globals.cash_total - Globals.cash_spent >= Globals.hire_cost:
+		Globals.cash_spent += Globals.hire_cost
+		Events.employee_hired.emit(Enums.EmployeeType.VIOLET)
 
 func _on_hire_magenta_pressed():
-	Events.employee_hired.emit(Enums.EmployeeType.MAGENTA)
+	if Globals.cash_total - Globals.cash_spent >= Globals.hire_cost:
+		Globals.cash_spent += Globals.hire_cost
+		Events.employee_hired.emit(Enums.EmployeeType.MAGENTA)

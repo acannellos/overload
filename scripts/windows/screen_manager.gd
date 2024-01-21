@@ -5,6 +5,8 @@ extends NinePatchRect
 
 @onready var windows = $windows
 @onready var taskbar = $taskbar
+@onready var recruiter = $windows/recruiter
+
 
 var spawn: Vector2 = Vector2(5.0,5.0)
 var seperator: Vector2 = Vector2(20,20)
@@ -23,13 +25,13 @@ func on_employee_hired(type):
 	employee_window.employee.name = get_random_employee_name()
 	employee_window.employee.type = type
 	employee_window.employee.id = Globals.max_id
-	print(Globals.max_id)
-	print(employee_window.employee.id)
 	Globals.max_id += 1
+	Globals.hire_cost += 50
+	recruiter.update_cost()
 	windows.add_child(employee_window)
 	
-	if spawn.y > 400:
-		spawn = Vector2(5.0,5.0) + Vector2(20,0) * i
+	if spawn.y > 200:
+		spawn = Vector2(5.0,5.0) + Vector2(40,0) * i
 		i += 1
 	
 	var new_shortcut_data = ShortcutData.new()
@@ -38,5 +40,5 @@ func on_employee_hired(type):
 	taskbar.populate_taskbar(taskbar.shortcut_datas)
 
 func get_random_employee_name() -> String: 
-	var employee_names = ["Abe", "Boon", "Clem", "Dex", "Shmo", "Momo", "Tata"]
+	var employee_names = ["Abe", "Boon", "Clem", "Dex", "Grim", "Shmo", "Momo", "Tata", "Ingo", "Lem", "Van", "Jeeb", "Nuna"]
 	return employee_names[randi() % employee_names.size()]

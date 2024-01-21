@@ -27,13 +27,6 @@ var overload_color : Color = Color(0.8627, 0.1961, 0.1843, 1.0)
 var start_color : Color = Color(1.0, 1.0, 1.0, 1.0)
 
 func _ready():
-	#if employee:
-		#label.text = employee.name
-	#set_employee_texture()
-	#
-	#if not employee.type == Enums.EmployeeType.PLAYER:
-		#size.y = 300
-	#update_count_label()
 	call_deferred("handle_ready")
 
 func handle_ready():
@@ -49,25 +42,36 @@ func handle_ready():
 	
 func _process(delta):
 	var i = 0
+	var children = task_list.get_children()
 	for task in task_datas:
+		var val = 1
 		if task and not is_overloaded:
-			task.progress += 1
+			if task.category == employee.type:
+				val *= 3
+			task.progress += val
+			children[i].texture_progress_bar.value = task.progress
 			if task.progress >= 999:
 				Globals.task_complete += 1
-				Events.task_completed.emit(Globals.task_complete)
+				Globals.cash_total += 50
+				Events.task_completed.emit()
 				task_datas[i] = null
 				task_list.populate_task_list(task_datas)
 				update_count_label()
 		i += 1
 	
 	var count = count_tasks()
-	overload_bar.value += 1 * count
+	if not employee.type == Enums.EmployeeType.PLAYER:
+		if count == 1:
+			overload_bar.value += 2
+		if count == 2:
+			overload_bar.value += 3
+	else:
+		overload_bar.value += 1 * count
 	
 	if count == 0:
 		overload_bar.value -= 3
 	
 	var progress_percentage = overload_bar.value / overload_bar.max_value
-	#overload_bar.modulate = Color(1.0, 1.0 - progress_percentage, 1.0 - progress_percentage, 1.0)
 	var interpolated_color = Color(
 		start_color.r + (overload_color.r - start_color.r) * progress_percentage,
 		start_color.g + (overload_color.g - start_color.g) * progress_percentage,

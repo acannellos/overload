@@ -32,11 +32,10 @@ func _process(delta):
 	var parent = get_parent()
 	var gparent = parent.get_parent()
 	
-	if not is_empty and gparent is Employee and not gparent.is_overloaded:
-		texture_progress_bar.value += 1
-		Events.task_progressed.emit()
-		
-		#TODO task complete
+	#var val = 1
+	#if not is_empty and gparent is Employee and not gparent.is_overloaded:
+		#texture_progress_bar.value += 1
+		#Events.task_progressed.emit()
 
 func _on_gui_input(event):
 	#SUPER HACK
