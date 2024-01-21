@@ -13,12 +13,16 @@ func _on_timer_timeout():
 	for task in task_datas:
 		if not task:
 			var new_task_data = TaskData.new()
-			new_task_data.category = Enums.EmployeeType.GREEN
+			new_task_data.category = get_random_employee_type()
 			task_datas[count] = new_task_data
 			task_list.populate_task_list(task_datas)
 			update_count_label()
 			return
 		count += 1
+
+func get_random_employee_type() -> Enums.EmployeeType:
+	var employee_types = [Enums.EmployeeType.GREEN, Enums.EmployeeType.BLUE, Enums.EmployeeType.VIOLET, Enums.EmployeeType.MAGENTA]
+	return employee_types[randi() % employee_types.size()]
 
 func count_tasks() -> int:
 	var count: int = 0

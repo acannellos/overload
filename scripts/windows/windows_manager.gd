@@ -5,6 +5,7 @@ extends Panel
 
 func _ready():
 	Events.task_clicked.connect(on_task_clicked)
+	Events.task_deleted.connect(on_task_deleted)
 
 func on_task_clicked(owner_window, index):
 	var clicked_task_data = owner_window.task_datas[index]	
@@ -20,6 +21,14 @@ func on_task_clicked(owner_window, index):
 			pass
 	
 	update_grabbed_task()
+
+func on_task_deleted(owner_window, index):
+	var clicked_task_data = owner_window.task_datas[index]
+	
+	if clicked_task_data:
+		owner_window.task_datas[index] = null
+		owner_window.update_count_label()
+		owner_window.task_list.populate_task_list(owner_window.task_datas)
 
 func _physics_process(delta):
 	if grabbed_task.visible:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkvki4vntkxur"]
+[gd_scene load_steps=21 format=3 uid="uid://dkvki4vntkxur"]
 
 [ext_resource type="Texture2D" uid="uid://cvymwsc47kgag" path="res://assets/textures/panel.bgwhite.png" id="1_nd7bt"]
 [ext_resource type="Script" path="res://scripts/windows/recruiter.gd" id="2_wsiix"]
@@ -9,11 +9,25 @@
 [ext_resource type="Texture2D" uid="uid://t7v0lyl0gi2t" path="res://assets/textures/panel.close.png" id="6_7v2dy"]
 [ext_resource type="Texture2D" uid="uid://dp58pw2rhjmjc" path="res://assets/textures/panel.close.red.png" id="7_r2fq3"]
 [ext_resource type="Texture2D" uid="uid://crk56s4em03hn" path="res://assets/textures/icon.recruiter.png" id="8_fjn1k"]
+[ext_resource type="Texture2D" uid="uid://0xv0cechb1g7" path="res://assets/textures/task_icons.circle.50.png" id="10_37lvj"]
+[ext_resource type="Texture2D" uid="uid://dgwv1vjemwmo2" path="res://assets/textures/task_icons.circle.png" id="11_5dvju"]
+[ext_resource type="Texture2D" uid="uid://d32fuhlj002rh" path="res://assets/textures/task_icons.square.50.png" id="12_er7to"]
+[ext_resource type="Texture2D" uid="uid://ckswasapjbmqg" path="res://assets/textures/task_icons.square.png" id="13_isckl"]
+[ext_resource type="Texture2D" uid="uid://cqyc83w0pdng8" path="res://assets/textures/task_icons.diamond.50.png" id="14_au8uj"]
+[ext_resource type="Texture2D" uid="uid://bfagubjcu0s7n" path="res://assets/textures/task_icons.diamond.png" id="15_r8yqu"]
+[ext_resource type="Texture2D" uid="uid://c2xauhc7064st" path="res://assets/textures/task_icons.triangle.50.png" id="16_o30gp"]
+[ext_resource type="Texture2D" uid="uid://cfoimwgjsler4" path="res://assets/textures/task_icons.triangle.png" id="17_1if0a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_holon"]
 resource_local_to_scene = true
 font = ExtResource("4_vj3qm")
 font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ho0uw"]
+resource_local_to_scene = true
+font = ExtResource("4_vj3qm")
+font_size = 34
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycyx2"]
@@ -50,6 +64,21 @@ text = "recruiter"
 label_settings = SubResource("LabelSettings_holon")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="cost_label" parent="." instance=ExtResource("3_b0yjl")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 54.0
+offset_right = 71.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "$X00 to hire"
+label_settings = SubResource("LabelSettings_ho0uw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="button_corner" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0.0862745)
@@ -108,9 +137,49 @@ scale = Vector2(0.33, 0.33)
 mouse_filter = 2
 texture = ExtResource("8_fjn1k")
 
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = 102.0
+offset_right = 76.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 40
+columns = 2
+
+[node name="hire_green" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_37lvj")
+texture_hover = ExtResource("11_5dvju")
+
+[node name="hire_blue" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("12_er7to")
+texture_hover = ExtResource("13_isckl")
+
+[node name="hire_violet" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_au8uj")
+texture_hover = ExtResource("15_r8yqu")
+
+[node name="hire_magenta" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("16_o30gp")
+texture_hover = ExtResource("17_1if0a")
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
 [connection signal="gui_input" from="Panel" to="WindowComponent" method="_on_panel_gui_input"]
 [connection signal="pressed" from="button_close" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="button_close" to="WindowComponent" method="_on_button_close_pressed"]
+[connection signal="pressed" from="GridContainer/hire_green" to="." method="_on_hire_green_pressed"]
+[connection signal="pressed" from="GridContainer/hire_blue" to="." method="_on_hire_blue_pressed"]
+[connection signal="pressed" from="GridContainer/hire_violet" to="." method="_on_hire_violet_pressed"]
+[connection signal="pressed" from="GridContainer/hire_magenta" to="." method="_on_hire_magenta_pressed"]

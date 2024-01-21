@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c76rjq6nleloo"]
+[gd_scene load_steps=27 format=3 uid="uid://c76rjq6nleloo"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_f72pj"]
 [ext_resource type="PackedScene" uid="uid://rwuet5lrrsoc" path="res://scenes/windows/panel.tscn" id="1_s8pgk"]
@@ -33,10 +33,34 @@ max_workload = 100.0
 [sub_resource type="LabelSettings" id="LabelSettings_sgyf8"]
 resource_local_to_scene = true
 font = ExtResource("17_cleb6")
-font_size = 36
+font_size = 28
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_f885q"]
+resource_local_to_scene = true
+font = ExtResource("17_cleb6")
+font_size = 44
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dsshy"]
+resource_local_to_scene = true
+font = ExtResource("17_cleb6")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yieup"]
+resource_local_to_scene = true
+font = ExtResource("17_cleb6")
+font_size = 44
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_310np"]
+resource_local_to_scene = true
+font = ExtResource("17_cleb6")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tik6t"]
 resource_local_to_scene = true
 font = ExtResource("17_cleb6")
 font_size = 52
@@ -144,23 +168,80 @@ offset_right = 97.0
 offset_bottom = 59.0
 script = ExtResource("14_rhp3r")
 
-[node name="note3" parent="notes" instance=ExtResource("1_s8pgk")]
+[node name="note3" type="NinePatchRect" parent="notes"]
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
-offset_left = 715.761
-offset_top = 200.0
-offset_right = 823.761
-offset_bottom = 312.0
-rotation = 0.0174533
+offset_left = 718.0
+offset_top = 210.0
+offset_right = 826.0
+offset_bottom = 322.0
+rotation = -0.0523599
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("15_1nwec")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
-[node name="note2" parent="notes" instance=ExtResource("1_s8pgk")]
+[node name="label" parent="notes/note3" instance=ExtResource("16_b7iuy")]
+layout_mode = 0
+offset_left = 19.5875
+offset_top = 17.3589
+offset_right = 83.5875
+offset_bottom = 60.3589
+text = "Staff"
+label_settings = SubResource("LabelSettings_sgyf8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="staff_count" parent="notes/note3" instance=ExtResource("16_b7iuy")]
+layout_mode = 0
+offset_left = 34.3683
+offset_top = 37.146
+offset_right = 74.3683
+offset_bottom = 97.146
+text = "0"
+label_settings = SubResource("LabelSettings_f885q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="note2" type="NinePatchRect" parent="notes"]
 modulate = Color(1, 1, 0.784314, 1)
 layout_mode = 0
-offset_left = 716.0
-offset_top = 90.0
-offset_right = 824.0
-offset_bottom = 202.0
-rotation = 0.0174533
+offset_left = 723.0
+offset_top = 91.0
+offset_right = 831.0
+offset_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("15_1nwec")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="label" parent="notes/note2" instance=ExtResource("16_b7iuy")]
+layout_mode = 0
+offset_left = 19.5875
+offset_top = 17.3589
+offset_right = 83.5875
+offset_bottom = 60.3589
+text = "Trash"
+label_settings = SubResource("LabelSettings_dsshy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="deleted_count" parent="notes/note2" instance=ExtResource("16_b7iuy")]
+layout_mode = 0
+offset_left = 34.3683
+offset_top = 37.146
+offset_right = 74.3683
+offset_bottom = 97.146
+text = "0"
+label_settings = SubResource("LabelSettings_yieup")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="note" type="NinePatchRect" parent="notes"]
 modulate = Color(1, 1, 0.784314, 1)
@@ -185,7 +266,7 @@ offset_top = 17.3589
 offset_right = 83.5875
 offset_bottom = 60.3589
 text = "Done"
-label_settings = SubResource("LabelSettings_sgyf8")
+label_settings = SubResource("LabelSettings_310np")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -196,7 +277,7 @@ offset_top = 37.146
 offset_right = 74.3683
 offset_bottom = 97.146
 text = "0"
-label_settings = SubResource("LabelSettings_f885q")
+label_settings = SubResource("LabelSettings_tik6t")
 horizontal_alignment = 1
 vertical_alignment = 1
 

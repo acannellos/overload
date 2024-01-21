@@ -4,12 +4,6 @@ extends VBoxContainer
 
 func _ready():
 	call_deferred("handle_ready")
-	
-
-#func _process(delta):
-	#for task in get_children():
-		#if not task.is_empty:
-			#task.update_progress()
 
 func handle_ready():
 	var owner_window = get_parent()

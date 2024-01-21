@@ -16,7 +16,13 @@ class_name Employee
 @onready var task_list = $task_list
 @onready var count_label = $count_label
 @onready var overload_bar = $overload_bar
+@onready var overload_label = $overload_bar/overload_label
+@onready var x = $x
+
+
 var is_overloaded: bool = false
+var overload_color : Color = Color(0.8627, 0.1961, 0.1843, 1.0)
+var start_color : Color = Color(1.0, 1.0, 1.0, 1.0)
 
 func _ready():
 	if employee:
@@ -31,7 +37,7 @@ func _ready():
 func _process(delta):
 	var i = 0
 	for task in task_datas:
-		if task:
+		if task and not is_overloaded:
 			task.progress += 1
 			if task.progress >= 999:
 				Globals.task_complete += 1
@@ -45,7 +51,27 @@ func _process(delta):
 	overload_bar.value += 1 * count
 	
 	if count == 0:
-		overload_bar.value -= 1
+		overload_bar.value -= 3
+	
+	var progress_percentage = overload_bar.value / overload_bar.max_value
+	#overload_bar.modulate = Color(1.0, 1.0 - progress_percentage, 1.0 - progress_percentage, 1.0)
+	var interpolated_color = Color(
+		start_color.r + (overload_color.r - start_color.r) * progress_percentage,
+		start_color.g + (overload_color.g - start_color.g) * progress_percentage,
+		start_color.b + (overload_color.b - start_color.b) * progress_percentage,
+		start_color.a + (overload_color.a - start_color.a) * progress_percentage
+	)
+	
+	overload_bar.modulate = interpolated_color
+
+	if overload_bar.value >= overload_bar.max_value:
+		is_overloaded = true
+		overload_label.text = "overloaded"
+		x.show()
+	else:
+		is_overloaded = false
+		overload_label.text = "workload"
+		x.hide()
 
 func set_employee_texture():
 	match employee.type:

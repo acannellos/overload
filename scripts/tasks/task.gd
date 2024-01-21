@@ -32,13 +32,11 @@ func _process(delta):
 	var parent = get_parent()
 	var gparent = parent.get_parent()
 	
-	if not is_empty and gparent is Employee:
-		#print("tick")
+	if not is_empty and gparent is Employee and not gparent.is_overloaded:
 		texture_progress_bar.value += 1
 		Events.task_progressed.emit()
 		
 		#TODO task complete
-
 
 func _on_gui_input(event):
 	#SUPER HACK
@@ -48,8 +46,10 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			Events.task_clicked.emit(gparent, get_index())
-			#print(get_index())
-			#print("button clicked")
+		
+		if event.button_index == MOUSE_BUTTON_RIGHT and gparent is Employee:
+			Globals.task_delete += 1
+			Events.task_deleted.emit(gparent, get_index())
 
 func set_employee_texture(task_data: TaskData):
 	
@@ -67,6 +67,3 @@ func set_employee_texture(task_data: TaskData):
 
 func update_progress(v):
 	texture_progress_bar.value = v
-
-func _on_pressed():
-	print("button pressed")

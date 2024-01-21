@@ -168,7 +168,7 @@ stretch_margin_bottom = 10
 texture_under = ExtResource("10_3dd6q")
 texture_progress = ExtResource("10_viy3c")
 
-[node name="label" parent="overload_bar" instance=ExtResource("3_dr2du")]
+[node name="overload_label" parent="overload_bar" instance=ExtResource("3_dr2du")]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -201,6 +201,13 @@ text = "0/0"
 label_settings = SubResource("LabelSettings_3mki7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="x" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(37, 35)
+scale = Vector2(1.66071, 1.66071)
+texture = ExtResource("7_kdmst")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="button_corner" to="." method="_on_texture_button_pressed"]
